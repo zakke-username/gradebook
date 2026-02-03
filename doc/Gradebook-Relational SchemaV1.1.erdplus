@@ -6,34 +6,34 @@
         "id": "c3c0a894-5f9f-477c-806b-728d9bb0f857",
         "type": "Table",
         "position": {
-          "x": 971,
-          "y": -66
+          "x": 1189,
+          "y": 120
         },
         "data": {
           "label": "STUDENT",
           "isConnectable": false,
           "columns": [
             {
-              "id": "96c47d77-7b4f-4bf5-ac54-0ddaaed0ac89",
+              "id": "4372e12c-f718-439b-8a70-ae5fb13a71ce",
               "name": "studentId",
               "type": "INT",
               "isPrimaryKey": true,
               "isOptional": false
             },
             {
-              "id": "ae29ef82-2595-436e-bf65-2e2021a8814d",
+              "id": "9993d914-5001-40e5-8060-268e6c2f569c",
               "name": "firstName",
-              "type": "VARCHAR(n)",
+              "type": "INT",
               "isPrimaryKey": false
             },
             {
-              "id": "248d9151-9533-45b6-9274-a49d95ad0666",
+              "id": "06972a7b-099b-4255-81b2-d8a8fde29bf2",
               "name": "lastName",
-              "type": "VARCHAR(n)",
+              "type": "INT",
               "isPrimaryKey": false
             },
             {
-              "id": "dd3ab787-50e5-4799-bc8c-c0ca6fad5c10",
+              "id": "53ef504f-ab47-4424-9f6d-3c4226dbff6d",
               "name": "enrollmentYear",
               "type": "INT",
               "isPrimaryKey": false
@@ -53,27 +53,27 @@
         "id": "fb275822-21bd-42cb-a480-1808f181053a",
         "type": "Table",
         "position": {
-          "x": 664,
-          "y": 359
+          "x": 829,
+          "y": 516
         },
         "data": {
           "label": "TEACHER",
           "isConnectable": false,
           "columns": [
             {
-              "id": "e62bf566-ad6c-48d7-84ac-b131770641c9",
+              "id": "eec557b7-d9cb-4f68-8676-c4ad39080b31",
               "name": "firstName",
-              "type": "VARCHAR(n)",
+              "type": "INT",
               "isPrimaryKey": false
             },
             {
-              "id": "30d7c9b7-6be4-4cf3-983c-5a7d0fb0ff85",
+              "id": "ac07f488-ddb0-473a-ac86-d3e43c89bdfa",
               "name": "lastName",
-              "type": "VARCHAR(n)",
+              "type": "INT",
               "isPrimaryKey": false
             },
             {
-              "id": "e9c55edc-aada-4da9-abb1-c7006d59fc8c",
+              "id": "becdff46-9823-43b2-90be-aa820ad25c9f",
               "name": "teacherId",
               "type": "INT",
               "isPrimaryKey": true,
@@ -94,43 +94,43 @@
         "id": "727c47d3-893c-4571-80c3-a59e536c5c02",
         "type": "Table",
         "position": {
-          "x": 1121,
-          "y": 279
+          "x": 850,
+          "y": 304
         },
         "data": {
           "label": "COURSE",
           "isConnectable": false,
           "columns": [
             {
-              "id": "facadbdc-d8ef-41a9-b4e8-0e1cafd10d82",
+              "id": "d36157cb-1eeb-45ec-867f-7980bef401ab",
               "name": "courseId",
               "type": "INT",
               "isPrimaryKey": true,
               "isOptional": false
             },
             {
-              "id": "c6434ae2-109d-4c41-a86b-8c2a5260c79b",
+              "id": "9e2fb9e5-2d9f-4c41-9ffb-7c1c2bea181e",
               "name": "name",
-              "type": "VARCHAR(n)",
+              "type": "INT",
               "isPrimaryKey": false
             },
             {
-              "id": "37b69af8-983b-47f6-8ebf-eb65b7a076be",
+              "id": "bdd585b3-e472-405c-a384-03ac39156fb9",
               "name": "code",
-              "type": "VARCHAR(n)",
+              "type": "INT",
               "isPrimaryKey": false
             },
             {
-              "id": "3b8b5394-eb5c-414a-827d-b460d7d29567",
+              "id": "dd339c69-45f8-4c24-8a22-1b7a4828f06d",
               "name": "fk_TEACHER",
               "type": "None",
               "isForeignKey": true,
               "foreignKeyProps": {
-                "foreignKeyGroupId": "55bd8a10-74a6-4846-949e-55b8e9ce6497",
+                "foreignKeyGroupId": "8eff39d9-706e-4cb6-bde8-186e3a1beb25",
                 "sourceTableId": "fb275822-21bd-42cb-a480-1808f181053a",
                 "columns": [
                   {
-                    "id": "fk_e9c55edc-aada-4da9-abb1-c7006d59fc8c",
+                    "id": "fk_becdff46-9823-43b2-90be-aa820ad25c9f",
                     "name": "teacherId",
                     "type": "INT"
                   }
@@ -153,73 +153,55 @@
         "id": "4e3c2d7c-750d-4a60-a44e-783b10fe2e43",
         "type": "Table",
         "position": {
-          "x": 1613,
-          "y": 165
+          "x": 1196,
+          "y": 536
         },
         "data": {
           "label": "ASSIGNMENT",
           "isConnectable": false,
           "columns": [
             {
-              "id": "ad9b07a7-9ba5-4fbd-bbec-7a4f70de98eb",
+              "id": "6c8d0a5b-d142-4b9d-99f1-8476d2e56683",
               "name": "assignmentId",
               "type": "INT",
               "isPrimaryKey": true,
               "isOptional": false
             },
             {
-              "id": "70330434-7bea-428c-927f-e5bc654f2512",
+              "id": "716fd044-bc79-4419-8234-81466029ffc6",
               "name": "title",
-              "type": "VARCHAR(n)",
+              "type": "INT",
               "isPrimaryKey": false
             },
             {
-              "id": "ac3c9bc0-0d83-490e-b50a-ff82dfe16496",
+              "id": "bc0b7774-2677-4b3b-b46d-d5044231445b",
               "name": "weight",
-              "type": "FLOAT",
+              "type": "INT",
               "isPrimaryKey": false
             },
             {
-              "id": "563f4453-88da-405e-8694-f4d5a214dcd8",
+              "id": "d2d39ce3-0dba-4a9d-8869-d87dd2ee0b13",
               "name": "maxScore",
               "type": "INT",
               "isPrimaryKey": false
             },
             {
-              "id": "cd3b57f8-b870-41ee-92f7-d317f0507243",
+              "id": "ede78dd2-3188-4224-ad34-cbfd5bb3e93f",
               "name": "type",
-              "type": "VARCHAR(n)",
+              "type": "INT",
               "isPrimaryKey": false
             },
             {
-              "id": "6629d590-cfe9-4608-8fac-a77475bd0b54",
-              "name": "fk_GRADE",
-              "type": "None",
-              "isForeignKey": true,
-              "foreignKeyProps": {
-                "foreignKeyGroupId": "b1fed224-80a1-487a-88a1-6b11732519ff",
-                "sourceTableId": "3f313aff-5366-42c4-bcdb-408c8ba2ca01",
-                "columns": [
-                  {
-                    "id": "fk_8b2ebdb7-95b1-4819-b560-155418dd9184",
-                    "name": "gradeId",
-                    "type": "INT"
-                  }
-                ]
-              },
-              "isOptional": false
-            },
-            {
-              "id": "29d3d471-66b0-427f-b42a-d56b72af0110",
+              "id": "5fe6ea7c-4649-4ce9-be26-9cf47d4c2d91",
               "name": "fk_COURSE",
               "type": "None",
               "isForeignKey": true,
               "foreignKeyProps": {
-                "foreignKeyGroupId": "06d78068-32e1-4e6c-b9f7-782d08402bda",
+                "foreignKeyGroupId": "c426e43a-b819-4d6d-9238-f1b2f10fd6b4",
                 "sourceTableId": "727c47d3-893c-4571-80c3-a59e536c5c02",
                 "columns": [
                   {
-                    "id": "fk_facadbdc-d8ef-41a9-b4e8-0e1cafd10d82",
+                    "id": "fk_d36157cb-1eeb-45ec-867f-7980bef401ab",
                     "name": "courseId",
                     "type": "INT"
                   }
@@ -233,7 +215,7 @@
         },
         "measured": {
           "width": 240,
-          "height": 202
+          "height": 177
         },
         "selected": false,
         "dragging": false
@@ -242,44 +224,62 @@
         "id": "3f313aff-5366-42c4-bcdb-408c8ba2ca01",
         "type": "Table",
         "position": {
-          "x": 1276,
-          "y": 58
+          "x": 1274,
+          "y": 326
         },
         "data": {
           "label": "GRADE",
           "isConnectable": false,
           "columns": [
             {
-              "id": "8b2ebdb7-95b1-4819-b560-155418dd9184",
+              "id": "9288c704-1f84-421f-846a-93bafcd8ed20",
               "name": "gradeId",
               "type": "INT",
               "isPrimaryKey": true,
               "isOptional": false
             },
             {
-              "id": "efb68ffe-42cf-45d9-80f8-bb28f9e41323",
+              "id": "87ca7046-f2ae-4fc6-a5f3-1821833caf61",
               "name": "score",
               "type": "INT",
               "isPrimaryKey": false
             },
             {
-              "id": "f48b1342-bd3b-48ef-b0be-4f442ff9db15",
+              "id": "e33c2e75-9338-4b8f-a65f-3abfabd7583c",
               "name": "date",
-              "type": "DATE",
+              "type": "INT",
               "isPrimaryKey": false
             },
             {
-              "id": "73be2702-0584-4838-9881-64d017be6358",
+              "id": "8ecc1411-2f6b-4c9a-b6a7-39bada222375",
               "name": "fk_STUDENT",
               "type": "None",
               "isForeignKey": true,
               "foreignKeyProps": {
-                "foreignKeyGroupId": "a65bc15d-6683-406c-8aaa-edd794c95241",
+                "foreignKeyGroupId": "b429d203-f71c-469a-87bc-0502304edaeb",
                 "sourceTableId": "c3c0a894-5f9f-477c-806b-728d9bb0f857",
                 "columns": [
                   {
-                    "id": "fk_96c47d77-7b4f-4bf5-ac54-0ddaaed0ac89",
+                    "id": "fk_4372e12c-f718-439b-8a70-ae5fb13a71ce",
                     "name": "studentId",
+                    "type": "INT"
+                  }
+                ]
+              },
+              "isOptional": false
+            },
+            {
+              "id": "e18d5c20-5fac-433b-bbf9-5b09e25dd76d",
+              "name": "fk_ASSIGNMENT",
+              "type": "None",
+              "isForeignKey": true,
+              "foreignKeyProps": {
+                "foreignKeyGroupId": "fa8ab25e-914a-4682-9168-a07b600c769a",
+                "sourceTableId": "4e3c2d7c-750d-4a60-a44e-783b10fe2e43",
+                "columns": [
+                  {
+                    "id": "fk_6c8d0a5b-d142-4b9d-99f1-8476d2e56683",
+                    "name": "assignmentId",
                     "type": "INT"
                   }
                 ]
@@ -292,64 +292,64 @@
         },
         "measured": {
           "width": 240,
-          "height": 127
+          "height": 152
         },
-        "selected": false,
+        "selected": true,
         "dragging": false
       },
       {
         "id": "72578ae8-63b2-4385-a7b7-26a550dd4bdc",
         "type": "Table",
         "position": {
-          "x": 644,
-          "y": 53
+          "x": 831,
+          "y": 18
         },
         "data": {
           "label": "ENROLLMENT",
           "isConnectable": false,
           "columns": [
             {
-              "id": "722f61dc-48a1-45c3-8258-377dc0ab74ae",
+              "id": "ce8afdd3-bb46-4e04-a11e-16e2f92daf7f",
               "name": "startDate",
-              "type": "DATE",
+              "type": "INT",
               "isPrimaryKey": false
             },
             {
-              "id": "a1d2802d-f2e2-4cca-8c8c-b05bdba4a292",
+              "id": "cf7998b4-eb83-44ed-9a61-6d34f99d914e",
               "name": "endDate",
-              "type": "DATE",
+              "type": "INT",
               "isPrimaryKey": false
             },
             {
-              "id": "33129090-da22-460d-82d5-35a0709fc19f",
+              "id": "7e5b9196-2de6-43fc-af07-0ea024d10443",
               "name": "enrollmentId",
               "type": "INT",
               "isPrimaryKey": true,
               "isOptional": false
             },
             {
-              "id": "d29f28fb-77f8-45f2-b537-167852c9fef3",
+              "id": "dfa3921d-77f7-4b57-a983-de09d08f0b0a",
               "name": "attendance",
               "type": "INT",
               "isPrimaryKey": false
             },
             {
-              "id": "758415e7-74bd-466a-9aae-7be7ef6be610",
+              "id": "9436bb8f-b360-4183-8324-91d6d13d79aa",
               "name": "finalGrade",
               "type": "INT",
               "isPrimaryKey": false
             },
             {
-              "id": "42d1d029-b1f5-41a0-8813-02c505f5158b",
+              "id": "ada90a3e-cf84-4e8e-a9e0-99b5f124f479",
               "name": "fk_STUDENT",
               "type": "None",
               "isForeignKey": true,
               "foreignKeyProps": {
-                "foreignKeyGroupId": "536b69fb-85f6-4914-9b31-fa5c17dcd1bd",
+                "foreignKeyGroupId": "91064183-aee2-4ddd-a705-3a965e9d826a",
                 "sourceTableId": "c3c0a894-5f9f-477c-806b-728d9bb0f857",
                 "columns": [
                   {
-                    "id": "fk_96c47d77-7b4f-4bf5-ac54-0ddaaed0ac89",
+                    "id": "fk_4372e12c-f718-439b-8a70-ae5fb13a71ce",
                     "name": "studentId",
                     "type": "INT"
                   }
@@ -358,16 +358,16 @@
               "isOptional": false
             },
             {
-              "id": "f69b3faf-0302-4759-a9c9-9713ef0d21ed",
+              "id": "1e59e94e-5475-459c-8983-28a215b77721",
               "name": "fk_COURSE",
               "type": "None",
               "isForeignKey": true,
               "foreignKeyProps": {
-                "foreignKeyGroupId": "94e5cacb-1999-405a-9f8d-2db6ec35c4be",
+                "foreignKeyGroupId": "a9a2b56d-7453-4795-9a74-5663a06f04c4",
                 "sourceTableId": "727c47d3-893c-4571-80c3-a59e536c5c02",
                 "columns": [
                   {
-                    "id": "fk_facadbdc-d8ef-41a9-b4e8-0e1cafd10d82",
+                    "id": "fk_d36157cb-1eeb-45ec-867f-7980bef401ab",
                     "name": "courseId",
                     "type": "INT"
                   }
@@ -377,8 +377,7 @@
             }
           ],
           "numberOfGroups": 0,
-          "isSelected": false,
-          "isFactTable": false
+          "isSelected": false
         },
         "measured": {
           "width": 240,
@@ -390,21 +389,21 @@
     ],
     "edges": [
       {
-        "id": "fb275822-21bd-42cb-a480-1808f181053a->727c47d3-893c-4571-80c3-a59e536c5c02_55bd8a10-74a6-4846-949e-55b8e9ce6497",
+        "id": "fb275822-21bd-42cb-a480-1808f181053a->727c47d3-893c-4571-80c3-a59e536c5c02_8eff39d9-706e-4cb6-bde8-186e3a1beb25",
         "type": "Relational",
         "source": "fb275822-21bd-42cb-a480-1808f181053a",
-        "targetHandle": "foreign-key-handle-55bd8a10-74a6-4846-949e-55b8e9ce6497",
+        "targetHandle": "foreign-key-handle-8eff39d9-706e-4cb6-bde8-186e3a1beb25",
         "target": "727c47d3-893c-4571-80c3-a59e536c5c02",
         "markerStart": {
           "type": "arrow"
         },
         "data": {
           "foreignKeyProps": {
-            "foreignKeyGroupId": "55bd8a10-74a6-4846-949e-55b8e9ce6497",
+            "foreignKeyGroupId": "8eff39d9-706e-4cb6-bde8-186e3a1beb25",
             "sourceTableId": "fb275822-21bd-42cb-a480-1808f181053a",
             "columns": [
               {
-                "id": "fk_e9c55edc-aada-4da9-abb1-c7006d59fc8c",
+                "id": "fk_becdff46-9823-43b2-90be-aa820ad25c9f",
                 "name": "teacherId",
                 "type": "INT"
               }
@@ -413,44 +412,21 @@
         }
       },
       {
-        "id": "3f313aff-5366-42c4-bcdb-408c8ba2ca01->4e3c2d7c-750d-4a60-a44e-783b10fe2e43_b1fed224-80a1-487a-88a1-6b11732519ff",
-        "type": "Relational",
-        "source": "3f313aff-5366-42c4-bcdb-408c8ba2ca01",
-        "targetHandle": "foreign-key-handle-b1fed224-80a1-487a-88a1-6b11732519ff",
-        "target": "4e3c2d7c-750d-4a60-a44e-783b10fe2e43",
-        "markerStart": {
-          "type": "arrow"
-        },
-        "data": {
-          "foreignKeyProps": {
-            "foreignKeyGroupId": "b1fed224-80a1-487a-88a1-6b11732519ff",
-            "sourceTableId": "3f313aff-5366-42c4-bcdb-408c8ba2ca01",
-            "columns": [
-              {
-                "id": "fk_8b2ebdb7-95b1-4819-b560-155418dd9184",
-                "name": "gradeId",
-                "type": "INT"
-              }
-            ]
-          }
-        }
-      },
-      {
-        "id": "727c47d3-893c-4571-80c3-a59e536c5c02->4e3c2d7c-750d-4a60-a44e-783b10fe2e43_06d78068-32e1-4e6c-b9f7-782d08402bda",
+        "id": "727c47d3-893c-4571-80c3-a59e536c5c02->4e3c2d7c-750d-4a60-a44e-783b10fe2e43_c426e43a-b819-4d6d-9238-f1b2f10fd6b4",
         "type": "Relational",
         "source": "727c47d3-893c-4571-80c3-a59e536c5c02",
-        "targetHandle": "foreign-key-handle-06d78068-32e1-4e6c-b9f7-782d08402bda",
+        "targetHandle": "foreign-key-handle-c426e43a-b819-4d6d-9238-f1b2f10fd6b4",
         "target": "4e3c2d7c-750d-4a60-a44e-783b10fe2e43",
         "markerStart": {
           "type": "arrow"
         },
         "data": {
           "foreignKeyProps": {
-            "foreignKeyGroupId": "06d78068-32e1-4e6c-b9f7-782d08402bda",
+            "foreignKeyGroupId": "c426e43a-b819-4d6d-9238-f1b2f10fd6b4",
             "sourceTableId": "727c47d3-893c-4571-80c3-a59e536c5c02",
             "columns": [
               {
-                "id": "fk_facadbdc-d8ef-41a9-b4e8-0e1cafd10d82",
+                "id": "fk_d36157cb-1eeb-45ec-867f-7980bef401ab",
                 "name": "courseId",
                 "type": "INT"
               }
@@ -459,21 +435,21 @@
         }
       },
       {
-        "id": "c3c0a894-5f9f-477c-806b-728d9bb0f857->3f313aff-5366-42c4-bcdb-408c8ba2ca01_a65bc15d-6683-406c-8aaa-edd794c95241",
+        "id": "c3c0a894-5f9f-477c-806b-728d9bb0f857->3f313aff-5366-42c4-bcdb-408c8ba2ca01_b429d203-f71c-469a-87bc-0502304edaeb",
         "type": "Relational",
         "source": "c3c0a894-5f9f-477c-806b-728d9bb0f857",
-        "targetHandle": "foreign-key-handle-a65bc15d-6683-406c-8aaa-edd794c95241",
+        "targetHandle": "foreign-key-handle-b429d203-f71c-469a-87bc-0502304edaeb",
         "target": "3f313aff-5366-42c4-bcdb-408c8ba2ca01",
         "markerStart": {
           "type": "arrow"
         },
         "data": {
           "foreignKeyProps": {
-            "foreignKeyGroupId": "a65bc15d-6683-406c-8aaa-edd794c95241",
+            "foreignKeyGroupId": "b429d203-f71c-469a-87bc-0502304edaeb",
             "sourceTableId": "c3c0a894-5f9f-477c-806b-728d9bb0f857",
             "columns": [
               {
-                "id": "fk_96c47d77-7b4f-4bf5-ac54-0ddaaed0ac89",
+                "id": "fk_4372e12c-f718-439b-8a70-ae5fb13a71ce",
                 "name": "studentId",
                 "type": "INT"
               }
@@ -482,45 +458,67 @@
         }
       },
       {
-        "id": "c3c0a894-5f9f-477c-806b-728d9bb0f857->72578ae8-63b2-4385-a7b7-26a550dd4bdc_536b69fb-85f6-4914-9b31-fa5c17dcd1bd",
+        "id": "4e3c2d7c-750d-4a60-a44e-783b10fe2e43->3f313aff-5366-42c4-bcdb-408c8ba2ca01_fa8ab25e-914a-4682-9168-a07b600c769a",
+        "type": "Relational",
+        "source": "4e3c2d7c-750d-4a60-a44e-783b10fe2e43",
+        "targetHandle": "foreign-key-handle-fa8ab25e-914a-4682-9168-a07b600c769a",
+        "target": "3f313aff-5366-42c4-bcdb-408c8ba2ca01",
+        "markerStart": {
+          "type": "arrow"
+        },
+        "data": {
+          "foreignKeyProps": {
+            "foreignKeyGroupId": "fa8ab25e-914a-4682-9168-a07b600c769a",
+            "sourceTableId": "4e3c2d7c-750d-4a60-a44e-783b10fe2e43",
+            "columns": [
+              {
+                "id": "fk_6c8d0a5b-d142-4b9d-99f1-8476d2e56683",
+                "name": "assignmentId",
+                "type": "INT"
+              }
+            ]
+          }
+        }
+      },
+      {
+        "id": "c3c0a894-5f9f-477c-806b-728d9bb0f857->72578ae8-63b2-4385-a7b7-26a550dd4bdc_91064183-aee2-4ddd-a705-3a965e9d826a",
         "type": "Relational",
         "source": "c3c0a894-5f9f-477c-806b-728d9bb0f857",
-        "targetHandle": "foreign-key-handle-536b69fb-85f6-4914-9b31-fa5c17dcd1bd",
+        "targetHandle": "foreign-key-handle-91064183-aee2-4ddd-a705-3a965e9d826a",
         "target": "72578ae8-63b2-4385-a7b7-26a550dd4bdc",
         "markerStart": {
           "type": "arrow"
         },
         "data": {
           "foreignKeyProps": {
-            "foreignKeyGroupId": "536b69fb-85f6-4914-9b31-fa5c17dcd1bd",
+            "foreignKeyGroupId": "91064183-aee2-4ddd-a705-3a965e9d826a",
             "sourceTableId": "c3c0a894-5f9f-477c-806b-728d9bb0f857",
             "columns": [
               {
-                "id": "fk_96c47d77-7b4f-4bf5-ac54-0ddaaed0ac89",
+                "id": "fk_4372e12c-f718-439b-8a70-ae5fb13a71ce",
                 "name": "studentId",
                 "type": "INT"
               }
             ]
           }
-        },
-        "selected": true
+        }
       },
       {
-        "id": "727c47d3-893c-4571-80c3-a59e536c5c02->72578ae8-63b2-4385-a7b7-26a550dd4bdc_94e5cacb-1999-405a-9f8d-2db6ec35c4be",
+        "id": "727c47d3-893c-4571-80c3-a59e536c5c02->72578ae8-63b2-4385-a7b7-26a550dd4bdc_a9a2b56d-7453-4795-9a74-5663a06f04c4",
         "type": "Relational",
         "source": "727c47d3-893c-4571-80c3-a59e536c5c02",
-        "targetHandle": "foreign-key-handle-94e5cacb-1999-405a-9f8d-2db6ec35c4be",
+        "targetHandle": "foreign-key-handle-a9a2b56d-7453-4795-9a74-5663a06f04c4",
         "target": "72578ae8-63b2-4385-a7b7-26a550dd4bdc",
         "markerStart": {
           "type": "arrow"
         },
         "data": {
           "foreignKeyProps": {
-            "foreignKeyGroupId": "94e5cacb-1999-405a-9f8d-2db6ec35c4be",
+            "foreignKeyGroupId": "a9a2b56d-7453-4795-9a74-5663a06f04c4",
             "sourceTableId": "727c47d3-893c-4571-80c3-a59e536c5c02",
             "columns": [
               {
-                "id": "fk_facadbdc-d8ef-41a9-b4e8-0e1cafd10d82",
+                "id": "fk_d36157cb-1eeb-45ec-867f-7980bef401ab",
                 "name": "courseId",
                 "type": "INT"
               }
@@ -530,18 +528,18 @@
       }
     ],
     "viewport": {
-      "x": -441.5,
-      "y": 256.5,
+      "x": -188.5,
+      "y": 60.5,
       "zoom": 1
     }
   },
-  "name": "Gradebook-Relational Schema",
+  "name": "Gradebook-Relational SchemaV1.1",
   "folder": {
     "name": "Diagrams",
     "folderType": 1,
     "depth": 0,
     "id": 205072
   },
-  "id": 251973,
-  "updatedAtTimestamp": 1770042699
+  "id": 254150,
+  "updatedAtTimestamp": 1770130958
 }
