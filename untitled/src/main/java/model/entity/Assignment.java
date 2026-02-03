@@ -23,10 +23,6 @@ public class Assignment {
     private String type;
 
     @ManyToOne(fetch = FetchType.LAZY, optional = false)
-    @JoinColumn(name = "gradeId", nullable = false)
-    private Grade grade;
-
-    @ManyToOne(fetch = FetchType.LAZY, optional = false)
     @JoinColumn(name = "courseId", nullable = false)
     private Course course;
 
@@ -68,14 +64,6 @@ public class Assignment {
 
     public void setType(String type) {
         this.type = type;
-    }
-
-    public Grade getGrade() {
-        return grade;
-    }
-
-    public void setGrade(Grade grade) {
-        this.grade = grade;
     }
 
     public Course getCourse() {

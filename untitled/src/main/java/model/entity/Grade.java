@@ -22,6 +22,10 @@ public class Grade {
     @JoinColumn(name = "studentId", nullable = false)
     private Student student;
 
+    @ManyToOne(fetch = FetchType.LAZY, optional = false)
+    @JoinColumn(name = "assignmentId", nullable = false)
+    private Assignment assignment;
+
     public Integer getId() {
         return id;
     }
@@ -52,6 +56,14 @@ public class Grade {
 
     public void setStudent(Student student) {
         this.student = student;
+    }
+
+    public Assignment getAssignment() {
+        return assignment;
+    }
+
+    public void setAssignment(Assignment assignment) {
+        this.assignment = assignment;
     }
 
 }
