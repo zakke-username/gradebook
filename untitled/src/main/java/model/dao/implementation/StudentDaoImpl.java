@@ -1,67 +1,70 @@
 package model.dao.implementation;
 
 import jakarta.persistence.EntityManager;
-import jakarta.persistence.Query;
-import model.dao.AssignmentDao;
-import model.entity.Assignment;
+import jakarta.persistence.TypedQuery;
+import model.dao.StudentDao;
+import model.entity.Student;
 
 import java.util.List;
 
-public class AssignmentDaoImpl implements AssignmentDao {
+public class StudentDaoImpl implements StudentDao {
 
     @Override
-    public void create(Assignment assignment) {
+    public void create(Student student) {
         EntityManager em = datasource.MariaDbConnection.getInstance();
         try {
             em.getTransaction().begin();
-            em.persist(assignment);
+            em.persist(student);
             em.getTransaction().commit();
         } finally {
             em.close();
         }
-
     }
 
     @Override
-    public Assignment findById(Integer id) {
+    public Student findById(Integer id) {
         EntityManager em = datasource.MariaDbConnection.getInstance();
         try {
-            return em.find(Assignment.class, id);
+            return em.find(Student.class, id);
         } finally {
             em.close();
         }
     }
 
     @Override
-    public List<Assignment> findAll() {
+    public List<Student> findAll() {
         EntityManager em = datasource.MariaDbConnection.getInstance();
         try {
-            List<Assignment> assignments = em.createQuery("select a from Assignment a").getResultList();
-            return assignments;
+            TypedQuery<Student> query =
+                    em.createQuery("SELECT s FROM Student s", Student.class);
+            return query.getResultList();
         } finally {
             em.close();
         }
     }
 
     @Override
-    public List<Assignment> findByCourseId(Integer courseId) {
+    public List<Student> findByEnrollmentYear(Integer year) {
         EntityManager em = datasource.MariaDbConnection.getInstance();
         try {
-            Query q = em.createQuery("select a from Assignment a where a.course.id = :courseId");
-            q.setParameter("courseId", courseId);
-            List<Assignment> list = q.getResultList();
-            return list;
+            TypedQuery<Student> query =
+                    em.createQuery(
+                            "SELECT s FROM Student s WHERE s.enrollmentYear = :year",
+                            Student.class
+                    );
+            query.setParameter("year", year);
+            return query.getResultList();
         } finally {
             em.close();
         }
     }
 
     @Override
-    public void update(Assignment assignment) {
+    public void update(Student student) {
         EntityManager em = datasource.MariaDbConnection.getInstance();
         try {
             em.getTransaction().begin();
-            em.merge(assignment);
+            em.merge(student);
             em.getTransaction().commit();
         } finally {
             em.close();
@@ -73,7 +76,10 @@ public class AssignmentDaoImpl implements AssignmentDao {
         EntityManager em = datasource.MariaDbConnection.getInstance();
         try {
             em.getTransaction().begin();
-            em.remove(findById(id));
+            Student student = em.find(Student.class, id);
+            if (student != null) {
+                em.remove(student);
+            }
             em.getTransaction().commit();
         } finally {
             em.close();
