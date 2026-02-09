@@ -4,7 +4,6 @@ import jakarta.persistence.EntityManager;
 import jakarta.persistence.Query;
 import model.dao.AssignmentDao;
 import model.entity.Assignment;
-import model.entity.Student;
 
 import java.util.List;
 
