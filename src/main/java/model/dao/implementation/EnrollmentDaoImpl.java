@@ -10,7 +10,7 @@ public class EnrollmentDaoImpl implements EnrollmentDao {
 
     @Override
     public void create(Enrollment enrollment) {
-        EntityManager em = datasource.MariaDbConnection.getInstance();
+        EntityManager em = datasource.MariaDbConnection.getEntityManager();
         try {
             em.getTransaction().begin();
             em.persist(enrollment);
@@ -22,7 +22,7 @@ public class EnrollmentDaoImpl implements EnrollmentDao {
 
     @Override
     public Enrollment findById(Integer id) {
-        EntityManager em = datasource.MariaDbConnection.getInstance();
+        EntityManager em = datasource.MariaDbConnection.getEntityManager();
         try {
             return em.find(Enrollment.class, id);
         } finally {
@@ -32,7 +32,7 @@ public class EnrollmentDaoImpl implements EnrollmentDao {
 
     @Override
     public List<Enrollment> findAll() {
-        EntityManager em = datasource.MariaDbConnection.getInstance();
+        EntityManager em = datasource.MariaDbConnection.getEntityManager();
         try {
             TypedQuery<Enrollment> query =
                     em.createQuery("SELECT e FROM Enrollment e", Enrollment.class);
@@ -44,7 +44,7 @@ public class EnrollmentDaoImpl implements EnrollmentDao {
 
     @Override
     public List<Enrollment> findByStudentId(Integer studentId) {
-        EntityManager em = datasource.MariaDbConnection.getInstance();
+        EntityManager em = datasource.MariaDbConnection.getEntityManager();
         try {
             TypedQuery<Enrollment> query =
                     em.createQuery(
@@ -60,7 +60,7 @@ public class EnrollmentDaoImpl implements EnrollmentDao {
 
     @Override
     public List<Enrollment> findByCourseId(Integer courseId) {
-        EntityManager em = datasource.MariaDbConnection.getInstance();
+        EntityManager em = datasource.MariaDbConnection.getEntityManager();
         try {
             TypedQuery<Enrollment> query =
                     em.createQuery(
@@ -76,7 +76,7 @@ public class EnrollmentDaoImpl implements EnrollmentDao {
 
     @Override
     public void update(Enrollment enrollment) {
-        EntityManager em = datasource.MariaDbConnection.getInstance();
+        EntityManager em = datasource.MariaDbConnection.getEntityManager();
         try {
             em.getTransaction().begin();
             em.merge(enrollment);
@@ -88,7 +88,7 @@ public class EnrollmentDaoImpl implements EnrollmentDao {
 
     @Override
     public void delete(Integer id) {
-        EntityManager em = datasource.MariaDbConnection.getInstance();
+        EntityManager em = datasource.MariaDbConnection.getEntityManager();
         try {
             em.getTransaction().begin();
             Enrollment enrollment = em.find(Enrollment.class, id);

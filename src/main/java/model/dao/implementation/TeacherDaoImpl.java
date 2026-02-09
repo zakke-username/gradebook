@@ -11,7 +11,7 @@ public class TeacherDaoImpl implements TeacherDao {
 
     @Override
     public void create(Teacher teacher) {
-        EntityManager em = datasource.MariaDbConnection.getInstance();
+        EntityManager em = datasource.MariaDbConnection.getEntityManager();
         try {
             em.getTransaction().begin();
             em.persist(teacher);
@@ -23,7 +23,7 @@ public class TeacherDaoImpl implements TeacherDao {
 
     @Override
     public Teacher findById(Integer id) {
-        EntityManager em = datasource.MariaDbConnection.getInstance();
+        EntityManager em = datasource.MariaDbConnection.getEntityManager();
         try {
             return em.find(Teacher.class, id);
         } finally {
@@ -33,7 +33,7 @@ public class TeacherDaoImpl implements TeacherDao {
 
     @Override
     public List<Teacher> findAll() {
-        EntityManager em = datasource.MariaDbConnection.getInstance();
+        EntityManager em = datasource.MariaDbConnection.getEntityManager();
         try {
             TypedQuery<Teacher> query =
                     em.createQuery("SELECT t FROM Teacher t", Teacher.class);
@@ -45,7 +45,7 @@ public class TeacherDaoImpl implements TeacherDao {
 
     @Override
     public List<Teacher> findByLastName(String lastName) {
-        EntityManager em = datasource.MariaDbConnection.getInstance();
+        EntityManager em = datasource.MariaDbConnection.getEntityManager();
         try {
             TypedQuery<Teacher> query =
                     em.createQuery(
@@ -61,7 +61,7 @@ public class TeacherDaoImpl implements TeacherDao {
 
     @Override
     public void update(Teacher teacher) {
-        EntityManager em = datasource.MariaDbConnection.getInstance();
+        EntityManager em = datasource.MariaDbConnection.getEntityManager();
         try {
             em.getTransaction().begin();
             em.merge(teacher);
@@ -73,7 +73,7 @@ public class TeacherDaoImpl implements TeacherDao {
 
     @Override
     public void delete(Integer id) {
-        EntityManager em = datasource.MariaDbConnection.getInstance();
+        EntityManager em = datasource.MariaDbConnection.getEntityManager();
         try {
             em.getTransaction().begin();
             Teacher teacher = em.find(Teacher.class, id);

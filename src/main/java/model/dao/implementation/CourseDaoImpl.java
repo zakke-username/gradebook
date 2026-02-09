@@ -11,7 +11,7 @@ public class CourseDaoImpl implements CourseDao {
 
     @Override
     public void create(Course course) {
-        EntityManager em = datasource.MariaDbConnection.getInstance();
+        EntityManager em = datasource.MariaDbConnection.getEntityManager();
         try {
             em.getTransaction().begin();
             em.persist(course);
@@ -23,7 +23,7 @@ public class CourseDaoImpl implements CourseDao {
 
     @Override
     public Course findById(Integer id) {
-        EntityManager em = datasource.MariaDbConnection.getInstance();
+        EntityManager em = datasource.MariaDbConnection.getEntityManager();
         try {
             return em.find(Course.class, id);
         } finally {
@@ -33,7 +33,7 @@ public class CourseDaoImpl implements CourseDao {
 
     @Override
     public List<Course> findAll() {
-        EntityManager em = datasource.MariaDbConnection.getInstance();
+        EntityManager em = datasource.MariaDbConnection.getEntityManager();
         try {
             TypedQuery<Course> query =
                     em.createQuery("SELECT c FROM Course c", Course.class);
@@ -45,7 +45,7 @@ public class CourseDaoImpl implements CourseDao {
 
     @Override
     public List<Course> findByTeacherId(Integer teacherId) {
-        EntityManager em = datasource.MariaDbConnection.getInstance();
+        EntityManager em = datasource.MariaDbConnection.getEntityManager();
         try {
             TypedQuery<Course> query =
                     em.createQuery(
@@ -61,7 +61,7 @@ public class CourseDaoImpl implements CourseDao {
 
     @Override
     public void update(Course course) {
-        EntityManager em = datasource.MariaDbConnection.getInstance();
+        EntityManager em = datasource.MariaDbConnection.getEntityManager();
         try {
             em.getTransaction().begin();
             em.merge(course);
@@ -73,7 +73,7 @@ public class CourseDaoImpl implements CourseDao {
 
     @Override
     public void delete(Integer id) {
-        EntityManager em = datasource.MariaDbConnection.getInstance();
+        EntityManager em = datasource.MariaDbConnection.getEntityManager();
         try {
             em.getTransaction().begin();
             Course course = em.find(Course.class, id);

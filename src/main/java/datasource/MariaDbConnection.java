@@ -4,17 +4,19 @@ import jakarta.persistence.*;
 
 public class MariaDbConnection {
 
-    private static EntityManagerFactory emf = null;
-    private static EntityManager em = null;
+    private static final EntityManagerFactory emf = Persistence.createEntityManagerFactory("GradebookMariaDbUnit");
 
-    public static EntityManager getInstance() {
+    private MariaDbConnection() {
+        // prevent instantiation
+    }
 
-        if (em == null) {
-            if (emf == null) {
-                emf = Persistence.createEntityManagerFactory("GradebookMariaDbUnit");
-            }
-            em = emf.createEntityManager();
+    public static EntityManager getEntityManager() {
+        return emf.createEntityManager();
+    }
+
+    public static void shutdown() {
+        if (emf.isOpen()) {
+            emf.close();
         }
-        return em;
     }
 }

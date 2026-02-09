@@ -1,6 +1,7 @@
 package model.entity;
 
 import jakarta.persistence.*;
+import org.hibernate.annotations.OnDelete;
 
 @Entity
 @Table(name = "course")

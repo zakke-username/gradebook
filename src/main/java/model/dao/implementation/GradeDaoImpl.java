@@ -11,7 +11,7 @@ public class GradeDaoImpl implements GradeDao {
 
     @Override
     public void create(Grade grade) {
-        EntityManager em = datasource.MariaDbConnection.getInstance();
+        EntityManager em = datasource.MariaDbConnection.getEntityManager();
         try {
             em.getTransaction().begin();
             em.persist(grade);
@@ -23,7 +23,7 @@ public class GradeDaoImpl implements GradeDao {
 
     @Override
     public Grade findById(Integer id) {
-        EntityManager em = datasource.MariaDbConnection.getInstance();
+        EntityManager em = datasource.MariaDbConnection.getEntityManager();
         try {
             return em.find(Grade.class, id);
         } finally {
@@ -33,7 +33,7 @@ public class GradeDaoImpl implements GradeDao {
 
     @Override
     public List<Grade> findAll() {
-        EntityManager em = datasource.MariaDbConnection.getInstance();
+        EntityManager em = datasource.MariaDbConnection.getEntityManager();
         try {
             TypedQuery<Grade> query =
                     em.createQuery("SELECT g FROM Grade g", Grade.class);
@@ -45,7 +45,7 @@ public class GradeDaoImpl implements GradeDao {
 
     @Override
     public List<Grade> findByStudentId(Integer studentId) {
-        EntityManager em = datasource.MariaDbConnection.getInstance();
+        EntityManager em = datasource.MariaDbConnection.getEntityManager();
         try {
             TypedQuery<Grade> query =
                     em.createQuery(
@@ -61,7 +61,7 @@ public class GradeDaoImpl implements GradeDao {
 
     @Override
     public List<Grade> findByAssignmentId(Integer assignmentId) {
-        EntityManager em = datasource.MariaDbConnection.getInstance();
+        EntityManager em = datasource.MariaDbConnection.getEntityManager();
         try {
             TypedQuery<Grade> query =
                     em.createQuery(
@@ -77,7 +77,7 @@ public class GradeDaoImpl implements GradeDao {
 
     @Override
     public Grade findByStudentAndAssignment(Integer studentId, Integer assignmentId) {
-        EntityManager em = datasource.MariaDbConnection.getInstance();
+        EntityManager em = datasource.MariaDbConnection.getEntityManager();
         try {
             TypedQuery<Grade> query =
                     em.createQuery(
@@ -95,7 +95,7 @@ public class GradeDaoImpl implements GradeDao {
 
     @Override
     public void update(Grade grade) {
-        EntityManager em = datasource.MariaDbConnection.getInstance();
+        EntityManager em = datasource.MariaDbConnection.getEntityManager();
         try {
             em.getTransaction().begin();
             em.merge(grade);
@@ -107,7 +107,7 @@ public class GradeDaoImpl implements GradeDao {
 
     @Override
     public void delete(Integer id) {
-        EntityManager em = datasource.MariaDbConnection.getInstance();
+        EntityManager em = datasource.MariaDbConnection.getEntityManager();
         try {
             em.getTransaction().begin();
             Grade grade = em.find(Grade.class, id);
