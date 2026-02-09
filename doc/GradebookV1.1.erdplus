@@ -552,7 +552,7 @@
           "label": "for",
           "sourceEntityDetails": {
             "id": "3f313aff-5366-42c4-bcdb-408c8ba2ca01",
-            "maxCardinality": "One"
+            "maxCardinality": "Many"
           },
           "targetEntityDetails": {
             "id": "4e3c2d7c-750d-4a60-a44e-783b10fe2e43",
@@ -932,7 +932,7 @@
         "target": "3f313aff-5366-42c4-bcdb-408c8ba2ca01",
         "data": {
           "id": "2dd7ccde-0573-4822-b95e-e6ee4a221c4f->3f313aff-5366-42c4-bcdb-408c8ba2ca01",
-          "maxCardinality": "One"
+          "maxCardinality": "Many"
         }
       },
       {
@@ -1037,12 +1037,12 @@
       }
     ],
     "viewport": {
-      "x": -151.51920363742556,
-      "y": 143.78188828047172,
-      "zoom": 1.0242104882360632
+      "x": -158.62310601229365,
+      "y": 139.62310601229376,
+      "zoom": 1
     }
   },
-  "name": "Gradebook",
+  "name": "GradebookV1.1",
   "folder": {
     "name": "Diagrams",
     "folderType": 1,
@@ -1050,5 +1050,5 @@
     "id": 205072
   },
   "id": 251931,
-  "updatedAtTimestamp": 1770042947
+  "updatedAtTimestamp": 1770130729
 }
