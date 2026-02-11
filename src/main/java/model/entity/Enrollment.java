@@ -40,9 +40,9 @@ public class Enrollment {
         return id;
     }
 
-    public void setId(Integer id) {
-        this.id = id;
-    }
+//    public void setId(Integer id) {
+//        this.id = id;
+//    }
 
     public LocalDate getStartDate() {
         return startDate;

@@ -33,9 +33,9 @@ public class Grade {
         return id;
     }
 
-    public void setId(Integer id) {
-        this.id = id;
-    }
+//    public void setId(Integer id) {
+//        this.id = id;
+//    }
 
     public Integer getScore() {
         return score;
