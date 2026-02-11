@@ -377,7 +377,9 @@
         },
         "data": {
           "label": "weight",
-          "types": [],
+          "types": {
+            "Optional": true
+          },
           "isSelected": false,
           "isConnectable": false
         },
@@ -689,7 +691,9 @@
         },
         "data": {
           "label": "attendance",
-          "types": [],
+          "types": {
+            "Optional": true
+          },
           "isSelected": false,
           "isConnectable": false
         },
@@ -705,12 +709,14 @@
         "parentId": "72578ae8-63b2-4385-a7b7-26a550dd4bdc",
         "type": "Attribute",
         "position": {
-          "x": 61,
-          "y": -125
+          "x": 63.27022023381892,
+          "y": -119.32444941545253
         },
         "data": {
           "label": "finalGrade",
-          "types": [],
+          "types": {
+            "Optional": true
+          },
           "isSelected": false,
           "isConnectable": false
         },
@@ -1037,12 +1043,12 @@
       }
     ],
     "viewport": {
-      "x": -158.62310601229365,
-      "y": 139.62310601229376,
-      "zoom": 1
+      "x": -443.7584823102975,
+      "y": 153.83451085888277,
+      "zoom": 0.7986537290645245
     }
   },
-  "name": "GradebookV1.1",
+  "name": "GradebookV1.2",
   "folder": {
     "name": "Diagrams",
     "folderType": 1,
@@ -1050,5 +1056,5 @@
     "id": 205072
   },
   "id": 251931,
-  "updatedAtTimestamp": 1770130729
+  "updatedAtTimestamp": 1770803281
 }
