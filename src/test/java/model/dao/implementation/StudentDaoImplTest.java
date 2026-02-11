@@ -1,6 +1,5 @@
 package model.dao.implementation;
 
-import model.dao.StudentDao;
 import model.entity.Student;
 import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.BeforeEach;
@@ -10,15 +9,10 @@ import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-class StudentDaoImplTest {
-
-    private static StudentDao studentDao;
+class StudentDaoImplTest extends AbstractDaoTest {
 
     @BeforeEach
-    void setUp() {
-        // Create a new StudentDaoImpl object
-        studentDao = new StudentDaoImpl();
-
+    void wipeTable() {
         // Wipe the student table.
         List<Student> students = studentDao.findAll();
         for (Student s : students) {
@@ -28,11 +22,8 @@ class StudentDaoImplTest {
 
     @AfterAll
     static void cleanDatabase() {
-        // Wipe the Student table after all tests have run.
-        List<Student> students = studentDao.findAll();
-        for (Student s : students) {
-            studentDao.delete(s.getId());
-        }
+        // Clean the database after all the tests have run.
+        wipeDatabase();
     }
 
     @Test

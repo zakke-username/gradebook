@@ -1,8 +1,5 @@
 package model.dao.implementation;
 
-import model.dao.AssignmentDao;
-import model.dao.CourseDao;
-import model.dao.TeacherDao;
 import model.entity.*;
 import org.junit.jupiter.api.*;
 
@@ -10,38 +7,14 @@ import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-class AssignmentDaoImplTest {
-
-    private static AssignmentDao assignmentDao;
-    private static CourseDao courseDao;
-    private static TeacherDao teacherDao;
+class AssignmentDaoImplTest extends AbstractDaoTest {
 
     private static Teacher testTeacher;
     private static Course testCourse;
 
-    static void wipeDatabase() {
-        List<Assignment> assignments = assignmentDao.findAll();
-        for (Assignment a : assignments) {
-            assignmentDao.delete(a.getId());
-        }
-
-        List<Course> courses = courseDao.findAll();
-        for (Course a : courses) {
-            courseDao.delete(a.getId());
-        }
-
-        List<Teacher> teachers = teacherDao.findAll();
-        for (Teacher t : teachers) {
-            teacherDao.delete(t.getId());
-        }
-    }
-
     @BeforeAll
     static void setup() {
-        assignmentDao = new AssignmentDaoImpl();
-        teacherDao = new TeacherDaoImpl();
-        courseDao = new CourseDaoImpl();
-
+        // Clean database before tests run
         wipeDatabase();
 
         // Create a test teacher
@@ -59,8 +32,8 @@ class AssignmentDaoImplTest {
     }
 
     @BeforeEach
-    void cleanDatabase() {
-        // Wipe the tables after all tests have run.
+    void wipeTable() {
+        // Wipe the table before every test runs.
         List<Assignment> assignments = assignmentDao.findAll();
         for (Assignment a : assignments) {
             assignmentDao.delete(a.getId());
@@ -69,6 +42,7 @@ class AssignmentDaoImplTest {
 
     @AfterAll
     static void tearDown() {
+        // Clean database after tests have ran.
         wipeDatabase();
     }
 
