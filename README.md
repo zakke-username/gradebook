@@ -1,0 +1,1 @@
+JaCoCo code coverage report hosted on [web disk](https://users.metropolia.fi/~sampokl/OhjelmistoTuotantoProjekti/jacoco/).
