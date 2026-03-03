@@ -19,6 +19,18 @@ public class Student {
     @Column(name = "enrollmentYear", nullable = false)
     private Integer enrollmentYear;
 
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "userId")
+    private User user;
+
+    public User getUser() {
+        return user;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
+    }
+
     public Integer getId() {
         return id;
     }
