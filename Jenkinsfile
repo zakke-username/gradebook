@@ -6,7 +6,7 @@ pipeline {
     stages {
         stage('Checkout') {
             steps {
-                git branch: 'jenkins-implementation', url: 'https://github.com/zakke-username/gradebook.git'
+                git branch: 'main', url: 'https://github.com/zakke-username/gradebook.git'
             }
         }
 
