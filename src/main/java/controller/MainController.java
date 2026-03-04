@@ -3,6 +3,7 @@ package controller;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.scene.control.Label;
 import javafx.scene.control.ListCell;
 import javafx.scene.control.ListView;
@@ -12,6 +13,7 @@ import javafx.scene.layout.VBox;
 import javafx.scene.layout.Priority;
 import javafx.stage.Stage;
 
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -66,6 +68,13 @@ public class MainController {
                     setGraphic(container);
 
                     // Add click handler here (setOnMouseClicked -> change scene to course view)
+                    setOnMouseClicked(event -> {
+                        try {
+                            FXMLLoader loader = new FXMLLoader(getClass().getResource("CourseView.fxml"));
+                        } catch (Exception e) {
+                            e.printStackTrace();
+                        }
+                    });
                 }
             }
         });
@@ -109,6 +118,7 @@ public class MainController {
         });
     }
 
+    // Helper for a custom listview item container
     private VBox listCellContainer() {
         VBox container = new VBox();
         container.setSpacing(16);
