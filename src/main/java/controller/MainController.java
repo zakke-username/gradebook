@@ -4,6 +4,8 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Label;
 import javafx.scene.control.ListCell;
 import javafx.scene.control.ListView;
@@ -67,10 +69,19 @@ public class MainController {
 
                     setGraphic(container);
 
-                    // Add click handler here (setOnMouseClicked -> change scene to course view)
+                    // Click handler for course view
                     setOnMouseClicked(event -> {
                         try {
-                            FXMLLoader loader = new FXMLLoader(getClass().getResource("CourseView.fxml"));
+                            FXMLLoader loader = new FXMLLoader(getClass().getResource("/CourseView.fxml"));
+
+                            Parent root = loader.load();
+                            CourseController controller = loader.getController();
+                            controller.setCourse(course);
+
+                            Stage stage = (Stage) getScene().getWindow();
+                            Scene scene = new Scene(root);
+                            stage.setScene(scene);
+                            stage.show();
                         } catch (Exception e) {
                             e.printStackTrace();
                         }
