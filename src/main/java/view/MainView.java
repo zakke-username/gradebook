@@ -5,6 +5,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
+import controller.LoginController;
 
 public class MainView extends Application {
 
@@ -16,6 +17,11 @@ public class MainView extends Application {
         loginStage.setScene(loginScene);
         loginStage.setTitle("Login");
         loginStage.showAndWait();
+
+        LoginController loginController = loginLoader.getController();
+        if (!loginController.isLoginSuccess()) {
+            return;
+        }
 
         FXMLLoader mainLoader = new FXMLLoader(getClass().getResource("/MainView.fxml"));
         Parent root = mainLoader.load();

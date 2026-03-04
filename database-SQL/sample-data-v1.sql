@@ -153,6 +153,19 @@ INSERT INTO `teacher` (`teacherId`, `firstName`, `lastName`) VALUES
 	(1, 'John', 'Doe'),
 	(2, 'David', 'Rodriguez');
 
+-- Dumping structure for table gradebook.user
+CREATE TABLE IF NOT EXISTS `user` (
+  `userId` int(11) NOT NULL AUTO_INCREMENT,
+  `username` varchar(50) NOT NULL,
+  `password_hash` varchar(50) NOT NULL,
+  `role` varchar(50) NOT NULL,
+  PRIMARY KEY (`userId`),
+  UNIQUE KEY `username` (`username`)
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+INSERT INTO `user` (username, password_hash, role) VALUES
+    ('teacher1', 'teacher123', 'TEACHER'),
+    ('student1', 'student123', 'STUDENT');
+
 /*!40103 SET TIME_ZONE=IFNULL(@OLD_TIME_ZONE, 'system') */;
 /*!40101 SET SQL_MODE=IFNULL(@OLD_SQL_MODE, '') */;
 /*!40014 SET FOREIGN_KEY_CHECKS=IFNULL(@OLD_FOREIGN_KEY_CHECKS, 1) */;
