@@ -10,7 +10,6 @@ import model.dao.AssignmentDao;
 import model.dao.implementation.AssignmentDaoImpl;
 import model.entity.Assignment;
 
-
 public class AssignmentController {
     private Assignment assignment;
 
@@ -35,7 +34,7 @@ public class AssignmentController {
     }
 
     private void displayInfo() {
-        assignmentTitleLabel.setText("Muokkaa kurssia " + this.assignment.getTitle());
+        assignmentTitleLabel.setText("Muokkaa tehtävää " + this.assignment.getTitle());
         titleTextField.setText(assignment.getTitle());
         descriptionTextArea.setText("Placeholder description...");
         pointsTextField.setText(this.assignment.getMaxScore().toString());

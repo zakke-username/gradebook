@@ -133,11 +133,7 @@ public class MainController {
     private VBox listCellContainer() {
         VBox container = new VBox();
         container.setSpacing(16);
-        container.setStyle(
-                "-fx-background-color: #b6c8d4;" +
-                        "-fx-padding: 16;" +
-                        "-fx-background-radius: 8;"
-        );
+        container.setStyle("-fx-background-color: #b6c8d4;" + "-fx-padding: 16;" + "-fx-background-radius: 8;");
         return container;
     }
 }

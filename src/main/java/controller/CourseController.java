@@ -6,6 +6,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.ListCell;
 import javafx.scene.control.ListView;
@@ -38,6 +39,12 @@ public class CourseController {
 
     @FXML
     private ListView<Assignment> assignmentListView;
+
+    @FXML
+    private Button newAssignmentButton;
+
+    @FXML
+    private Button backButton;
 
     @FXML
     public void initialize() {
@@ -147,6 +154,35 @@ public class CourseController {
             stage.initModality(Modality.APPLICATION_MODAL);
             stage.setScene(new Scene(root));
             stage.showAndWait();
+
+            displayAssignments();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    @FXML
+    private void createNewAssignment() {
+        // Create assignment obj
+        Assignment a = new Assignment();
+        a.setTitle("Uusi tehtävä");
+        a.setCourse(this.course);
+        a.setMaxScore(5);
+        a.setWeight(1.0f);
+        a.setType("Homework"); // hardcoded for testing, add options later
+
+        // Show popup
+        displayAssignmentWindow(a);
+    }
+
+    @FXML
+    private void showMainView() {
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/MainView.fxml"));
+            Parent root = loader.load();
+            Stage window = (Stage) backButton.getScene().getWindow();
+            window.setScene(new Scene(root));
+            window.show();
         } catch (Exception e) {
             e.printStackTrace();
         }
