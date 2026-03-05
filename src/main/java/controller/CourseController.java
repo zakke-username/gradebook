@@ -73,6 +73,13 @@ public class CourseController {
                     setText(null);
                 } else {
                     setText(student.getFirstName() + " " + student.getLastName());
+
+                    // Show student/grade view
+                    setOnMouseClicked(event -> {
+                        if (event.getClickCount() == 2) {
+                            displayStudentView(student);
+                        }
+                    });
                 }
             }
         });
@@ -173,6 +180,29 @@ public class CourseController {
 
         // Show popup
         displayAssignmentWindow(a);
+    }
+
+    private void displayStudentView(Student student) {
+        try {
+            // Load FXML
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/StudentView.fxml"));
+            Parent root = loader.load();
+
+            // Set up controller & display info
+            StudentController controller = loader.getController();
+            controller.setStudent(student);
+            controller.setCourse(this.course);
+            controller.displayInfo();
+
+            // New popup window
+            Stage window = new Stage();
+            window.setTitle(this.course.getName() + " | " + student.getFirstName() + " " + student.getLastName());
+            window.initModality(Modality.APPLICATION_MODAL);
+            window.setScene(new Scene(root));
+            window.showAndWait();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 
     @FXML
