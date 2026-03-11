@@ -15,8 +15,15 @@ public class GradeCalculate {
         return sum / grades.size();
     }
 
-    public double calculateWeightedAverage(double assignment, double exam, double project) {
-        return (assignment * 0.4) + (exam * 0.4) + (project * 0.2);
+    public static double calculateWeightedAverage(List<Double> grades, List<Double> weights) {
+        double weightedSum = 0;
+        double totalWeight = 0;
+        for (int i = 0; i < grades.size(); i++) {
+            weightedSum += grades.get(i) * weights.get(i);
+            totalWeight += weights.get(i);
+        }
+
+        return weightedSum / totalWeight;
     }
 
 

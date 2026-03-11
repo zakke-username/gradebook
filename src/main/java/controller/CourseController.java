@@ -15,10 +15,8 @@ import javafx.stage.Modality;
 import javafx.stage.Stage;
 import model.dao.AssignmentDao;
 import model.dao.EnrollmentDao;
-import model.dao.StudentDao;
 import model.dao.implementation.AssignmentDaoImpl;
 import model.dao.implementation.EnrollmentDaoImpl;
-import model.dao.implementation.StudentDaoImpl;
 import model.entity.Assignment;
 import model.entity.Course;
 import model.entity.Enrollment;
@@ -223,6 +221,8 @@ public class CourseController {
         try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/MainView.fxml"));
             Parent root = loader.load();
+            MainController controller = loader.getController();
+            controller.setUser(LoginController.getLoggedInUser());
             Stage window = (Stage) backButton.getScene().getWindow();
             window.setScene(new Scene(root));
             window.show();

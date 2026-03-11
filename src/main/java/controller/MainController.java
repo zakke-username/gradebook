@@ -9,14 +9,9 @@ import javafx.scene.Scene;
 import javafx.scene.control.Label;
 import javafx.scene.control.ListCell;
 import javafx.scene.control.ListView;
-import javafx.scene.effect.DropShadow;
-import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
-import javafx.scene.layout.Priority;
 import javafx.stage.Stage;
 
-import java.sql.SQLException;
-import java.util.ArrayList;
 import java.util.List;
 
 import model.dao.AssignmentDao;
