@@ -71,19 +71,21 @@ public class MainController {
 
                     // Click handler for course view
                     setOnMouseClicked(event -> {
-                        try {
-                            FXMLLoader loader = new FXMLLoader(getClass().getResource("/CourseView.fxml"));
+                        if (event.getClickCount() == 2) {
+                            try {
+                                FXMLLoader loader = new FXMLLoader(getClass().getResource("/CourseView.fxml"));
 
-                            Parent root = loader.load();
-                            CourseController controller = loader.getController();
-                            controller.setCourse(course);
+                                Parent root = loader.load();
+                                CourseController controller = loader.getController();
+                                controller.setCourse(course);
 
-                            Stage stage = (Stage) getScene().getWindow();
-                            Scene scene = new Scene(root);
-                            stage.setScene(scene);
-                            stage.show();
-                        } catch (Exception e) {
-                            e.printStackTrace();
+                                Stage stage = (Stage) getScene().getWindow();
+                                Scene scene = new Scene(root);
+                                stage.setScene(scene);
+                                stage.show();
+                            } catch (Exception e) {
+                                e.printStackTrace();
+                            }
                         }
                     });
                 }

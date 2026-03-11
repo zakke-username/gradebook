@@ -2,8 +2,10 @@ package model.dao.implementation;
 
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.Query;
+import jakarta.persistence.TypedQuery;
 import model.dao.AssignmentDao;
 import model.entity.Assignment;
+import model.entity.Grade;
 
 import java.util.List;
 

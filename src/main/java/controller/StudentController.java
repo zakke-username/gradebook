@@ -8,6 +8,8 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.control.cell.TextFieldTableCell;
+import javafx.util.converter.IntegerStringConverter;
 import model.dao.AssignmentDao;
 import model.dao.GradeDao;
 import model.dao.implementation.AssignmentDaoImpl;
@@ -17,6 +19,7 @@ import model.entity.Course;
 import model.entity.Grade;
 import model.entity.Student;
 
+import java.time.LocalDate;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -60,7 +63,20 @@ public class StudentController {
         gradeTable.setItems(rows);
 
         assignmentColumn.setCellValueFactory(data -> new ReadOnlyStringWrapper(data.getValue().getKey()));
-        gradeColumn.setCellValueFactory(data -> new ReadOnlyStringWrapper(data.getValue().getValue().toString()));
+        gradeColumn.setCellValueFactory(data -> {
+            Integer score = data.getValue().getValue();
+            return new ReadOnlyStringWrapper(score != null ? score.toString() : "Ungraded");
+        });
+
+        // Make grades editable
+        gradeColumn.setEditable(true);
+        gradeColumn.setCellFactory(TextFieldTableCell.forTableColumn());
+        gradeColumn.setOnEditCommit(event -> {
+            Map.Entry<String, Integer> row = event.getRowValue();
+            Integer newScore = Integer.valueOf(event.getNewValue());
+            row.setValue(newScore);
+            saveGrade(row.getKey(), newScore);
+        });
     }
 
     public Map<String, Integer> getAssignmentGrades() {
@@ -68,16 +84,51 @@ public class StudentController {
         AssignmentDao assignmentDao = new AssignmentDaoImpl();
         List<Assignment> assignments = assignmentDao.findByCourseId(this.course.getId());
 
-        // Loop over assignments, add grade to hashmap if exists
-        Map<String, Integer> grades = new HashMap<>();
         GradeDao gradeDao = new GradeDaoImpl();
         int studentId = this.student.getId();
+
+        // Loop over assignments, add grade to hashmap
+        Map<String, Integer> grades = new HashMap<>();
         for (Assignment assignment : assignments) {
             Grade grade = gradeDao.findByStudentAndAssignment(studentId, assignment.getId());
             if (grade != null) {
                 grades.put(assignment.getTitle(), grade.getScore());
+            } else {
+                grades.put(assignment.getTitle(), null);
             }
         }
         return grades;
+    }
+
+    public void saveGrade(String assignmentTitle, Integer score) {
+        AssignmentDao assignmentDao = new AssignmentDaoImpl();
+        GradeDao gradeDao = new GradeDaoImpl();
+
+        // Find assignment
+        List<Assignment> assignments = assignmentDao.findByCourseId(this.course.getId());
+        Assignment assignment = null;
+        for (Assignment a : assignments) {
+            if (a.getTitle().equals(assignmentTitle)) {
+                assignment = a;
+                break;
+            }
+        }
+        if (assignment == null) return;
+
+        // Save to db
+        Grade existing = gradeDao.findByStudentAndAssignment(student.getId(), assignment.getId());
+        if (existing == null) {
+            // Create new
+            Grade newGrade = new Grade();
+            newGrade.setScore(score);
+            newGrade.setStudent(student);
+            newGrade.setAssignment(assignment);
+            newGrade.setDate(LocalDate.now());
+            gradeDao.create(newGrade);
+        } else {
+            // Update grade
+            existing.setScore(score);
+            gradeDao.update(existing);
+        }
     }
 }

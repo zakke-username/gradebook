@@ -70,9 +70,21 @@ public class CourseController {
                 super.updateItem(student, empty);
 
                 if (empty || student == null) {
-                    setText(null);
+                    setGraphic(null);
                 } else {
-                    setText(student.getFirstName() + " " + student.getLastName());
+//                    setText(student.getFirstName() + " " + student.getLastName());
+
+                    // Container
+                    VBox container = new VBox();
+                    container.setSpacing(16);
+                    container.setStyle("-fx-background-color: #b6c8d4;" + "-fx-padding: 16;" + "-fx-background-radius: 8;");
+
+                    // Name label
+                    Label nameLabel = new Label(student.getFirstName() + " " + student.getLastName());
+                    nameLabel.setStyle("-fx-font-size: 16;" + "-fx-text-fill: black;" + "-fx-font-weight: bold;");
+                    container.getChildren().add(nameLabel);
+
+                    setGraphic(container);
 
                     // Show student/grade view
                     setOnMouseClicked(event -> {

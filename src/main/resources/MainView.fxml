@@ -93,10 +93,10 @@
                   <Font name="System Bold" size="18.0" />
                </font>
                <VBox.margin>
-                  <Insets bottom="8.0" left="16.0" right="16.0" top="16.0" />
+                  <Insets bottom="32.0" left="32.0" right="32.0" top="32.0" />
                </VBox.margin>
             </Label>
-            <HBox prefHeight="100.0" prefWidth="200.0" spacing="16.0" VBox.vgrow="ALWAYS">
+            <HBox prefHeight="100.0" prefWidth="200.0" spacing="32.0" VBox.vgrow="ALWAYS">
                <children>
                   <VBox prefHeight="200.0" prefWidth="100.0" style="-fx-background-color: #d2dce5; -fx-background-radius: 8;" HBox.hgrow="ALWAYS">
                      <children>
@@ -127,68 +127,32 @@
                         </DropShadow>
                      </effect>
                   </VBox>
-                  <VBox prefHeight="200.0" prefWidth="100.0" spacing="16.0" HBox.hgrow="ALWAYS">
-                     <HBox.margin>
-                        <Insets />
-                     </HBox.margin>
+                  <VBox prefHeight="200.0" prefWidth="100.0" style="-fx-background-color: #d2dce5; -fx-background-radius: 8;" HBox.hgrow="ALWAYS">
+                     <padding>
+                        <Insets bottom="16.0" left="16.0" right="16.0" top="16.0" />
+                     </padding>
                      <children>
-                        <VBox prefHeight="200.0" prefWidth="100.0" style="-fx-background-color: #d2dce5; -fx-background-radius: 8;" VBox.vgrow="ALWAYS">
+                        <Label text="Arvostelemattomat tehtävät" VBox.vgrow="ALWAYS">
+                           <font>
+                              <Font name="System Bold" size="14.0" />
+                           </font>
                            <VBox.margin>
-                              <Insets />
+                              <Insets bottom="16.0" />
                            </VBox.margin>
-                           <padding>
-                              <Insets bottom="16.0" left="16.0" right="16.0" top="16.0" />
-                           </padding>
-                           <children>
-                              <Label text="Seuraavat tapahtumat" VBox.vgrow="ALWAYS">
-                                 <font>
-                                    <Font name="System Bold" size="14.0" />
-                                 </font>
-                                 <VBox.margin>
-                                    <Insets bottom="16.0" />
-                                 </VBox.margin>
-                              </Label>
-                              <ListView prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: transparent; -fx-control-inner-background: transparent; -fx-padding: 0;" VBox.vgrow="ALWAYS" />
-                           </children>
-                           <effect>
-                              <DropShadow>
-                                 <color>
-                                    <Color opacity="0.5" />
-                                 </color>
-                              </DropShadow>
-                           </effect>
-                        </VBox>
-                        <VBox prefHeight="200.0" prefWidth="100.0" style="-fx-background-color: #d2dce5; -fx-background-radius: 8;" VBox.vgrow="ALWAYS">
-                           <padding>
-                              <Insets bottom="16.0" left="16.0" right="16.0" top="16.0" />
-                           </padding>
-                           <children>
-                              <Label text="Arvostelemattomat tehtävät" VBox.vgrow="ALWAYS">
-                                 <font>
-                                    <Font name="System Bold" size="14.0" />
-                                 </font>
-                                 <VBox.margin>
-                                    <Insets bottom="16.0" />
-                                 </VBox.margin>
-                              </Label>
-                              <ListView fx:id="assignmentListView" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: transparent; -fx-control-inner-background: transparent; -fx-padding: 0;" VBox.vgrow="ALWAYS" />
-                           </children>
-                           <VBox.margin>
-                              <Insets />
-                           </VBox.margin>
-                           <effect>
-                              <DropShadow>
-                                 <color>
-                                    <Color opacity="0.5" />
-                                 </color>
-                              </DropShadow>
-                           </effect>
-                        </VBox>
+                        </Label>
+                        <ListView fx:id="assignmentListView" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: transparent; -fx-control-inner-background: transparent; -fx-padding: 0;" VBox.vgrow="ALWAYS" />
                      </children>
+                     <effect>
+                        <DropShadow>
+                           <color>
+                              <Color opacity="0.5" />
+                           </color>
+                        </DropShadow>
+                     </effect>
                   </VBox>
                </children>
                <VBox.margin>
-                  <Insets bottom="16.0" left="16.0" right="16.0" top="16.0" />
+                  <Insets bottom="32.0" left="32.0" right="32.0" top="32.0" />
                </VBox.margin>
             </HBox>
          </children>
