@@ -88,7 +88,7 @@
     </MenuBar>
       <VBox prefHeight="200.0" prefWidth="100.0" VBox.vgrow="ALWAYS">
          <children>
-            <Label text="Tervetuloa, Matti Meikäläinen!" VBox.vgrow="ALWAYS">
+            <Label fx:id="welcomeLabel" VBox.vgrow="ALWAYS">
                <font>
                   <Font name="System Bold" size="18.0" />
                </font>

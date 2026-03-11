@@ -9,6 +9,8 @@ public interface StudentDao {
 
     Student findById(Integer id);
 
+    Student findByUserId(int userId);
+
     List<Student> findAll();
 
     List<Student> findByEnrollmentYear(Integer year);

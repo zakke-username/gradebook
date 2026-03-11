@@ -21,8 +21,11 @@ import java.util.List;
 
 import model.dao.AssignmentDao;
 import model.dao.CourseDao;
-import model.entity.Assignment;
-import model.entity.Course;
+import model.dao.StudentDao;
+import model.dao.TeacherDao;
+import model.dao.implementation.StudentDaoImpl;
+import model.dao.implementation.TeacherDaoImpl;
+import model.entity.*;
 import model.dao.implementation.CourseDaoImpl;
 import model.dao.implementation.AssignmentDaoImpl;
 
@@ -35,9 +38,31 @@ public class MainController {
     private ListView<Assignment> assignmentListView;
 
     @FXML
+    private Label welcomeLabel;
+
+    @FXML
     public void initialize() {
         displayCourses();
         displayAssignments();
+    }
+
+    public void setUser(User user) {
+        TeacherDao teacherDao = new TeacherDaoImpl();
+        Teacher teacher = teacherDao.findByUserId(user.getId());
+
+        if (teacher != null) {
+            welcomeLabel.setText("Tervetuloa, " + teacher.getFirstName() + " " + teacher.getLastName() + "!");
+            return;
+        }
+
+        StudentDao studentDao = new StudentDaoImpl();
+        Student student = studentDao.findByUserId(user.getId());
+
+        String name = student != null
+                ? student.getFirstName() + " " + student.getLastName()
+                : user.getUsername();
+
+        welcomeLabel.setText("Tervetuloa, " + name + "!");
     }
 
     // Show all courses for testing (todo: get courses by teacher ID)
