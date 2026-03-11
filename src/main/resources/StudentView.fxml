@@ -38,7 +38,7 @@
       <TableView fx:id="gradeTable" editable="true" prefHeight="200.0" prefWidth="200.0" VBox.vgrow="ALWAYS">
         <columns>
           <TableColumn fx:id="assignmentColumn" prefWidth="129.0" text="Tehtävä" />
-          <TableColumn fx:id="gradeColumn" prefWidth="139.0" text="Arvosana" />
+          <TableColumn fx:id="gradeColumn" prefWidth="139.0" text="Pisteet" />
         </columns>
          <columnResizePolicy>
             <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
