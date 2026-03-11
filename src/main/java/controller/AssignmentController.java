@@ -26,6 +26,9 @@ public class AssignmentController {
     private TextField pointsTextField;
 
     @FXML
+    private TextField weightTextField;
+
+    @FXML
     private Button saveButton;
 
     public void setAssignment(Assignment assignment) {
@@ -36,6 +39,7 @@ public class AssignmentController {
     private void displayInfo() {
         assignmentTitleLabel.setText("Muokkaa tehtävää " + this.assignment.getTitle());
         titleTextField.setText(assignment.getTitle());
+        weightTextField.setText(String.valueOf(assignment.getWeight()));
         descriptionTextArea.setText("Placeholder description...");
         pointsTextField.setText(this.assignment.getMaxScore().toString());
     }
@@ -44,8 +48,11 @@ public class AssignmentController {
     private void handleSaveAssignment() {
         String title = titleTextField.getText();
         int points = Integer.parseInt(pointsTextField.getText());
+        float weight = Float.parseFloat(weightTextField.getText());
+
         this.assignment.setTitle(title);
         this.assignment.setMaxScore(points);
+        this.assignment.setWeight(weight);
 
         AssignmentDao assignmentDao = new AssignmentDaoImpl();
         assignmentDao.update(this.assignment);

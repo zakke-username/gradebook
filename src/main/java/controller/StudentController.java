@@ -59,7 +59,7 @@ public class StudentController {
     public void displayInfo() {
         studentNameLabel.setText("Opiskelija: " + this.student.getFirstName() + " " + this.student.getLastName());
         courseNameLabel.setText("Kurssi: " + this.course.getName());
-        weightedAverageLabel.setText("Painotettu keskiarvo: " + String.format("%.2f", calculateWeightedAverage()));
+        weightedAverageLabel.setText("Painotettu keskiarvo (0-5): " + String.format("%.2f", calculateWeightedAverage()));
         displayGrades();
     }
 
@@ -126,14 +126,14 @@ public class StudentController {
         if (existing == null) {
             // Create new
             Grade newGrade = new Grade();
-            newGrade.setScore(score);
+            newGrade.setScore(Math.min(assignment.getMaxScore(), Math.max(0, score)));
             newGrade.setStudent(student);
             newGrade.setAssignment(assignment);
             newGrade.setDate(LocalDate.now());
             gradeDao.create(newGrade);
         } else {
             // Update grade
-            existing.setScore(score);
+            existing.setScore(Math.min(assignment.getMaxScore(), Math.max(0, score)));
             gradeDao.update(existing);
         }
         displayInfo();
@@ -154,11 +154,12 @@ public class StudentController {
         for (Assignment a : assignments) {
             Grade grade = gradeDao.findByStudentAndAssignment(studentId, a.getId());
             if (grade != null && grade.getScore() != null) {
-                scores.add(grade.getScore().doubleValue());
+                double normalized = grade.getScore().doubleValue() / a.getMaxScore().doubleValue();
+                scores.add(normalized);
                 weights.add(a.getWeight().doubleValue());
             }
         }
         if (scores.isEmpty()) return 0.0;
-        return GradeCalculate.weightedAverage(scores, weights);
+        return GradeCalculate.weightedAverage(scores, weights) * 5;
     }
 }

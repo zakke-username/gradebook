@@ -135,7 +135,7 @@ public class CourseController {
                     container.getChildren().add(nameLabel);
 
                     // Score
-                    Label scoreLabel = new Label(assignment.getMaxScore().toString() + " pistettä");
+                    Label scoreLabel = new Label("Maksimipisteet: " + assignment.getMaxScore().toString());
                     scoreLabel.setStyle("-fx-font-size: 12;" + "-fx-text-fill: black;");
                     container.getChildren().add(scoreLabel);
 
