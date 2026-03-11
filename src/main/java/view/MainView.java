@@ -25,6 +25,8 @@ public class MainView extends Application {
 
         FXMLLoader mainLoader = new FXMLLoader(getClass().getResource("/MainView.fxml"));
         Parent root = mainLoader.load();
+        controller.MainController mainController = mainLoader.getController();
+        mainController.setUser(loginController.getLoggedInUser());
         primaryStage.setScene(new Scene(root));
         primaryStage.setTitle("Dashboard");
         primaryStage.show();

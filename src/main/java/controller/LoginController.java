@@ -24,6 +24,9 @@ public class LoginController {
 
     private boolean loginSuccess = false;
 
+    private User loggedInUser;
+
+
     public boolean isLoginSuccess() {
         return loginSuccess;
     }
@@ -42,6 +45,7 @@ public class LoginController {
 
         if (user != null && checkPassword(password, user.getPasswordHash())) {
             loginSuccess = true;
+            loggedInUser = user;
             System.out.println("Kirjautuminen onnistui!");
             // isTeacher = user.getRole().equalsIgnoreCase("TEACHER");
             // isStudent = user.getRole().equalsIgnoreCase("STUDENT");
@@ -50,6 +54,10 @@ public class LoginController {
         } else {
             showError("Kirjautuminen epäonnistui!");
         }
+    }
+
+    public User getLoggedInUser() {
+        return loggedInUser;
     }
 
     private boolean checkPassword(String plainPassword, String storedHash) {
