@@ -26,7 +26,7 @@ public class Enrollment {
     @Column(name = "finalGrade")
     private Integer finalGrade;
 
-    @ManyToOne(fetch = FetchType.LAZY, optional = false)
+    @ManyToOne(fetch = FetchType.EAGER, optional = false)
     @JoinColumn(name = "studentId", nullable = false)
     @OnDelete(action = OnDeleteAction.CASCADE)
     private Student student;
