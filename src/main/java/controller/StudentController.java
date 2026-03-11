@@ -4,6 +4,7 @@ import javafx.beans.property.ReadOnlyStringWrapper;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
+import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
@@ -19,6 +20,7 @@ import model.entity.Course;
 import model.entity.Grade;
 import model.entity.Student;
 import util.GradeCalculate;
+import util.SaveFile;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
@@ -47,6 +49,9 @@ public class StudentController {
 
     @FXML
     private TableColumn<Map.Entry<String, Integer>, String> gradeColumn;
+
+    @FXML
+    private Button saveReportCardButton;
 
     public void setStudent(Student student) {
         this.student = student;
@@ -161,5 +166,14 @@ public class StudentController {
         }
         if (scores.isEmpty()) return 0.0;
         return GradeCalculate.weightedAverage(scores, weights) * 5;
+    }
+
+    @FXML
+    public void saveReportCard() {
+        String courseName = this.course.getName();
+        Map<String, Integer> grades = getAssignmentGrades();
+        double weightedAverage = calculateWeightedAverage();
+        String studentName = student.getFirstName() + " " + student.getLastName();
+        SaveFile.saveReportAsPdf(courseName, grades, weightedAverage, studentName);
     }
 }
