@@ -1,0 +1,8 @@
+.hoverable {
+    -fx-background-color: #b6c8d4;
+}
+
+.hoverable:hover {
+    -fx-background-color: #6b737c;
+    -fx-cursor: hand;
+}

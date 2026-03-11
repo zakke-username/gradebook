@@ -8,7 +8,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<VBox alignment="CENTER" prefHeight="434.0" prefWidth="284.0" spacing="16.0" style="-fx-background-color: #d2dce5; -fx-background-radius: 8;" xmlns="http://javafx.com/javafx/25" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.LoginController">
+<VBox alignment="CENTER" prefHeight="458.0" prefWidth="341.0" spacing="16.0" style="-fx-background-color: #d2dce5; -fx-background-radius: 8;" xmlns="http://javafx.com/javafx/25" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.LoginController">
 
     <Label style="-fx-text-fill: black; -fx-font-weight: bold;" text="Kirjaudu sisään">
         <font>
@@ -49,7 +49,7 @@
         </VBox.margin>
     </VBox>
 
-    <Button onAction="#handleLogin" style="-fx-background-color: #b6c8d4; -fx-font-weight: bold; -fx-text-fill: black; -fx-background-radius: 8; -fx-padding: 8 16;" text="Kirjaudu">
+    <Button onAction="#handleLogin" style="-fx-background-color: #b6c8d4; -fx-font-weight: bold; -fx-text-fill: black; -fx-background-radius: 8; -fx-padding: 8 16; -fx-cursor: hand;" styleClass="hoverable" stylesheets="@style.css" text="Kirjaudu">
         <VBox.margin>
             <Insets bottom="16" left="16" right="16" top="8" />
         </VBox.margin>

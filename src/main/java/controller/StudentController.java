@@ -18,8 +18,10 @@ import model.entity.Assignment;
 import model.entity.Course;
 import model.entity.Grade;
 import model.entity.Student;
+import util.GradeCalculate;
 
 import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -33,6 +35,9 @@ public class StudentController {
 
     @FXML
     private Label courseNameLabel;
+
+    @FXML
+    private Label weightedAverageLabel;
 
     @FXML
     private TableView<Map.Entry<String, Integer>> gradeTable;
@@ -54,6 +59,7 @@ public class StudentController {
     public void displayInfo() {
         studentNameLabel.setText("Opiskelija: " + this.student.getFirstName() + " " + this.student.getLastName());
         courseNameLabel.setText("Kurssi: " + this.course.getName());
+        weightedAverageLabel.setText("Painotettu keskiarvo: " + String.format("%.2f", calculateWeightedAverage()));
         displayGrades();
     }
 
@@ -130,5 +136,29 @@ public class StudentController {
             existing.setScore(score);
             gradeDao.update(existing);
         }
+        displayInfo();
+    }
+
+    public double calculateWeightedAverage() {
+        AssignmentDao assignmentDao = new AssignmentDaoImpl();
+        GradeDao gradeDao = new GradeDaoImpl();
+
+        // Get all assignments in course
+        List<Assignment> assignments = assignmentDao.findByCourseId(this.course.getId());
+
+        List<Double> scores = new ArrayList<>();
+        List<Double> weights = new ArrayList<>();
+        int studentId = this.student.getId();
+
+        // Loop over assignments, if graded, add to scores & weights
+        for (Assignment a : assignments) {
+            Grade grade = gradeDao.findByStudentAndAssignment(studentId, a.getId());
+            if (grade != null && grade.getScore() != null) {
+                scores.add(grade.getScore().doubleValue());
+                weights.add(a.getWeight().doubleValue());
+            }
+        }
+        if (scores.isEmpty()) return 0.0;
+        return GradeCalculate.weightedAverage(scores, weights);
     }
 }

@@ -89,7 +89,7 @@ public class MainController {
 
                     // Name label
                     Label nameLabel = new Label(course.getName() + " (" + course.getCode() + ")");
-                    nameLabel.setStyle("-fx-font-size: 16;" + "-fx-text-fill: black;" + "-fx-font-weight: bold;");
+                    nameLabel.setStyle("-fx-font-size: 14;" + "-fx-text-fill: black;" + "-fx-font-weight: bold;");
                     container.getChildren().add(nameLabel);
 
                     setGraphic(container);
@@ -140,7 +140,7 @@ public class MainController {
 
                     // Name label
                     Label nameLabel = new Label(assignment.getTitle());
-                    nameLabel.setStyle("-fx-font-size: 16;" + "-fx-text-fill: black;" + "-fx-font-weight: bold;");
+                    nameLabel.setStyle("-fx-font-size: 14;" + "-fx-text-fill: black;" + "-fx-font-weight: bold;");
                     container.getChildren().add(nameLabel);
 
                     // Course label

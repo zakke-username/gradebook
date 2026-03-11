@@ -120,9 +120,9 @@
                         <Insets />
                      </HBox.margin>
                      <effect>
-                        <DropShadow>
+                        <DropShadow height="32.0" radius="15.5" width="32.0">
                            <color>
-                              <Color opacity="0.49618321657180786" />
+                              <Color opacity="0.25" />
                            </color>
                         </DropShadow>
                      </effect>
@@ -143,9 +143,9 @@
                         <ListView fx:id="assignmentListView" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: transparent; -fx-control-inner-background: transparent; -fx-padding: 0;" VBox.vgrow="ALWAYS" />
                      </children>
                      <effect>
-                        <DropShadow>
+                        <DropShadow height="32.0" radius="15.5" width="32.0">
                            <color>
-                              <Color opacity="0.5" />
+                              <Color opacity="0.25" />
                            </color>
                         </DropShadow>
                      </effect>

@@ -40,8 +40,10 @@
 <?import javafx.scene.control.MenuBar?>
 <?import javafx.scene.control.MenuItem?>
 <?import javafx.scene.control.SeparatorMenuItem?>
+<?import javafx.scene.effect.DropShadow?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
+<?import javafx.scene.paint.Color?>
 <?import javafx.scene.text.Font?>
 
 <VBox prefHeight="728.0" prefWidth="1053.0" xmlns="http://javafx.com/javafx/25" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.CourseController">
@@ -101,10 +103,10 @@
                   </Label>
                </children>
                <padding>
-                  <Insets bottom="16.0" left="16.0" right="16.0" top="16.0" />
+                  <Insets bottom="32.0" left="32.0" right="32.0" top="32.0" />
                </padding>
             </HBox>
-            <HBox prefHeight="308.0" prefWidth="640.0" spacing="16.0" VBox.vgrow="ALWAYS">
+            <HBox prefHeight="308.0" prefWidth="640.0" spacing="32.0" VBox.vgrow="ALWAYS">
                <children>
                   <VBox prefHeight="200.0" prefWidth="100.0" style="-fx-background-color: #d2dce5; -fx-background-radius: 8;" HBox.hgrow="ALWAYS">
                      <children>
@@ -113,7 +115,7 @@
                               <Insets bottom="8.0" left="8.0" right="8.0" top="8.0" />
                            </VBox.margin>
                            <font>
-                              <Font name="System Bold" size="12.0" />
+                              <Font name="System Bold" size="14.0" />
                            </font>
                         </Label>
                         <ListView fx:id="studentListView" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: transparent; -fx-control-inner-background: transparent;" VBox.vgrow="ALWAYS" />
@@ -121,6 +123,13 @@
                      <padding>
                         <Insets bottom="8.0" left="8.0" right="8.0" top="8.0" />
                      </padding>
+                     <effect>
+                        <DropShadow height="32.0" radius="15.5" width="32.0">
+                           <color>
+                              <Color opacity="0.25" />
+                           </color>
+                        </DropShadow>
+                     </effect>
                   </VBox>
                   <VBox prefHeight="200.0" prefWidth="100.0" style="-fx-background-color: #d2dce5; -fx-background-radius: 8;" HBox.hgrow="ALWAYS">
                      <children>
@@ -129,11 +138,11 @@
                               <Insets bottom="8.0" left="8.0" right="8.0" top="8.0" />
                            </VBox.margin>
                            <font>
-                              <Font name="System Bold" size="12.0" />
+                              <Font name="System Bold" size="14.0" />
                            </font>
                         </Label>
                         <ListView fx:id="assignmentListView" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: transparent; -fx-control-inner-background: transparent;" VBox.vgrow="ALWAYS" />
-                        <Button fx:id="newAssignmentButton" mnemonicParsing="false" onAction="#createNewAssignment" text="Uusi tehtävä">
+                        <Button fx:id="newAssignmentButton" mnemonicParsing="false" onAction="#createNewAssignment" text="+ Uusi tehtävä">
                            <VBox.margin>
                               <Insets bottom="8.0" left="8.0" right="8.0" top="8.0" />
                            </VBox.margin>
@@ -142,10 +151,17 @@
                      <padding>
                         <Insets bottom="8.0" left="8.0" right="8.0" top="8.0" />
                      </padding>
+                     <effect>
+                        <DropShadow height="32.0" radius="15.5" width="32.0">
+                           <color>
+                              <Color opacity="0.25" />
+                           </color>
+                        </DropShadow>
+                     </effect>
                   </VBox>
                </children>
                <padding>
-                  <Insets bottom="16.0" left="16.0" right="16.0" top="16.0" />
+                  <Insets bottom="32.0" left="32.0" right="32.0" top="32.0" />
                </padding>
             </HBox>
          </children>

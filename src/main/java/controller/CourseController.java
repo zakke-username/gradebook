@@ -81,7 +81,7 @@ public class CourseController {
 
                     // Name label
                     Label nameLabel = new Label(student.getFirstName() + " " + student.getLastName());
-                    nameLabel.setStyle("-fx-font-size: 16;" + "-fx-text-fill: black;" + "-fx-font-weight: bold;");
+                    nameLabel.setStyle("-fx-font-size: 14;" + "-fx-text-fill: black;");
                     container.getChildren().add(nameLabel);
 
                     setGraphic(container);
@@ -136,6 +136,7 @@ public class CourseController {
 
                     // Score
                     Label scoreLabel = new Label(assignment.getMaxScore().toString() + " pistettä");
+                    scoreLabel.setStyle("-fx-font-size: 12;" + "-fx-text-fill: black;");
                     container.getChildren().add(scoreLabel);
 
                     setGraphic(container);

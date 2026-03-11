@@ -11,7 +11,7 @@
    <children>
       <VBox prefHeight="25.0" prefWidth="580.0" spacing="8.0">
          <children>
-            <Label text="Arvosanat" VBox.vgrow="ALWAYS">
+            <Label text="Arvioinnit" VBox.vgrow="ALWAYS">
                <font>
                   <Font name="System Bold" size="18.0" />
                </font>
@@ -29,6 +29,7 @@
                   <Insets />
                </VBox.margin>
             </Label>
+            <Label fx:id="weightedAverageLabel" text="Painotettu keskiarvo: 4.5" />
          </children>
          <padding>
             <Insets bottom="16.0" left="16.0" right="16.0" top="16.0" />
