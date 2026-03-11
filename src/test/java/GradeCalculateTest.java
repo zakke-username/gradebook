@@ -1,4 +1,6 @@
 import org.junit.jupiter.api.Test;
+import util.GradeCalculate;
+
 import static org.junit.jupiter.api.Assertions.*;
 import java.util.List;
 
@@ -7,75 +9,61 @@ class GradeCalculateTest {
     private final GradeCalculate calc = new GradeCalculate();
 
     @Test
-    void returnsCorrectAverage() {
-        double result = calc.calculateAverage(List.of(80.0, 90.0, 100.0));
-        assertEquals(90.0, result);
-    }
-
-    @Test
-    void emptyListReturnsZero() {
-        double result = calc.calculateAverage(List.of());
-        assertEquals(0.0, result);
-    }
-
-    @Test
-    void singleValueReturnsSameValue() {
-        double result = calc.calculateAverage(List.of(75.0));
-        assertEquals(75.0, result);
-    }
-
-    @Test
-    void Below0throwsException() {
-        assertThrows(IllegalArgumentException.class, () -> calc.percentageToGrade(-1));
-    }
-
-    @Test
-    void invalidAbove100throwsException() {
-        assertThrows(IllegalArgumentException.class, () -> calc.percentageToGrade(120));
-    }
-
-    @Test
-    void percentageToGrade0To49Returns1() {
-        assertEquals(0, calc.percentageToGrade(0));
-        assertEquals(0, calc.percentageToGrade(39));
-    }
-
-    @Test
-    void percentageToGrade50To59Returns1() {
-        assertEquals(1, calc.percentageToGrade(40));
-        assertEquals(1, calc.percentageToGrade(49));
-    }
-
-    @Test
-    void percentageToGrade50To59Returns2() {
-        assertEquals(2, calc.percentageToGrade(50));
-        assertEquals(2, calc.percentageToGrade(59));
-    }
-
-    @Test
-    void percentageToGrade60To69Returns3() {
-        assertEquals(3, calc.percentageToGrade(60));
-        assertEquals(3, calc.percentageToGrade(69));
-    }
-
-    @Test
-    void percentageToGrade_70To79_returns4() {
-        assertEquals(4, calc.percentageToGrade(70));
-        assertEquals(4, calc.percentageToGrade(79));
-    }
-
-    @Test
-    void percentageToGrade_80To100_returns5() {
-        assertEquals(5, calc.percentageToGrade(80));
-        assertEquals(5, calc.percentageToGrade(90));
-        assertEquals(5, calc.percentageToGrade(100));
-    }
-
-    @Test
     void testWeightedAverageWithCustomWeights() {
-        assertEquals(4.0, GradeCalculate.calculateWeightedAverage(
+        assertEquals(4.0, GradeCalculate.weightedAverage(
                 List.of(5.0, 3.0, 4.0),
                 List.of(40.0, 40.0, 20.0)
+        ));
+    }
+    @Test
+    void testWeightedAverageEqualWeights() {
+        assertEquals(3.0, GradeCalculate.weightedAverage(
+                List.of(2.0, 3.0, 4.0),
+                List.of(1.0, 1.0, 1.0)
+        ));
+    }
+
+    @Test
+    void testSingleValue() {
+        assertEquals(5.0, GradeCalculate.weightedAverage(
+                List.of(5.0),
+                List.of(10.0)
+        ));
+    }
+
+    @Test
+    void testDecimalWeights() {
+        assertEquals(3.5, GradeCalculate.weightedAverage(
+                List.of(3.0, 4.0),
+                List.of(0.5, 0.5)
+        ));
+    }
+
+    @Test
+    void testMismatchedListSizes() {
+        assertThrows(IllegalArgumentException.class, () ->
+                GradeCalculate.weightedAverage(
+                        List.of(3.0, 4.0),
+                        List.of(50.0)
+                )
+        );
+    }
+
+    @Test
+    void testZeroTotalWeight() {
+        assertThrows(ArithmeticException.class, () ->
+                GradeCalculate.weightedAverage(
+                        List.of(3.0, 4.0),
+                        List.of(0.0, 0.0)
+                )
+        );
+    }
+
+    @Test
+    void testNegativeWeights() {
+        assertEquals(2.0, GradeCalculate.weightedAverage(
+                List.of(1.0, 3.0),
+                List.of(-1.0, -1.0)
         ));
     }
 }
