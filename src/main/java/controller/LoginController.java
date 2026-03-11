@@ -24,7 +24,7 @@ public class LoginController {
 
     private boolean loginSuccess = false;
 
-    private User loggedInUser;
+    private static User loggedInUser;
 
 
     public boolean isLoginSuccess() {
@@ -56,7 +56,7 @@ public class LoginController {
         }
     }
 
-    public User getLoggedInUser() {
+    public static User getLoggedInUser() {
         return loggedInUser;
     }
 

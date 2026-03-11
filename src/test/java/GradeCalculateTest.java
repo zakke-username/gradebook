@@ -25,18 +25,6 @@ class GradeCalculateTest {
     }
 
     @Test
-    void WeightedAverageBasicValuesReturnsCorrectResult() {
-        double result = calc.calculateWeightedAverage(80, 90, 70);
-        assertEquals(82.0, result);
-    }
-
-    @Test
-    void calculateWeightedAverageWithDecimals() {
-        double result = calc.calculateWeightedAverage(89.5, 91.2, 76.8);
-        assertEquals(87.64, result, 0.01);
-    }
-
-    @Test
     void Below0throwsException() {
         assertThrows(IllegalArgumentException.class, () -> calc.percentageToGrade(-1));
     }
@@ -81,5 +69,13 @@ class GradeCalculateTest {
         assertEquals(5, calc.percentageToGrade(80));
         assertEquals(5, calc.percentageToGrade(90));
         assertEquals(5, calc.percentageToGrade(100));
+    }
+
+    @Test
+    void testWeightedAverageWithCustomWeights() {
+        assertEquals(4.0, GradeCalculate.calculateWeightedAverage(
+                List.of(5.0, 3.0, 4.0),
+                List.of(40.0, 40.0, 20.0)
+        ));
     }
 }
