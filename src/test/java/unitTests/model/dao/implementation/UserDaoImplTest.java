@@ -1,8 +1,9 @@
-package model.dao.implementation;
+package unitTests.model.dao.implementation;
 
 import datasource.MariaDbConnection;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.EntityTransaction;
+import model.dao.implementation.UserDaoImpl;
 import model.entity.User;
 import org.junit.jupiter.api.*;
 

@@ -1,6 +1,7 @@
-package model.dao.implementation;
+package unitTests.model.dao.implementation;
 
 import model.dao.*;
+import model.dao.implementation.*;
 import model.entity.*;
 
 import java.util.List;

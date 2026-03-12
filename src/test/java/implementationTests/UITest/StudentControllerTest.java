@@ -1,4 +1,4 @@
-package UITest;
+package implementationTests.UITest;
 
 import controller.StudentController;
 import javafx.scene.Node;

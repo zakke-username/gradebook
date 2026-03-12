@@ -1,4 +1,4 @@
-package UITest;
+package implementationTests.UITest;
 
 import controller.AssignmentController;
 import javafx.scene.Node;
