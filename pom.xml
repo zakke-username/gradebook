@@ -98,8 +98,11 @@
                 <version>3.2.5</version>
                 <configuration>
                     <includes>
-                        <include>**/unitTests/*Test.java</include>
+                        <include>**/*Test.java</include>
                     </includes>
+                    <excludes>
+                        <exclude>**/implementationTests/**</exclude>
+                    </excludes>
                 </configuration>
             </plugin>
         </plugins>
