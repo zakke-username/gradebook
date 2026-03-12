@@ -32,6 +32,21 @@ public class StudentDaoImpl implements StudentDao {
     }
 
     @Override
+    public Student findByUserId(int userId) {
+        EntityManager em = datasource.MariaDbConnection.getEntityManager();
+        try {
+            TypedQuery<Student> query = em.createQuery(
+                    "SELECT t FROM Student t WHERE t.user.id = :userId", Student.class);
+            query.setParameter("userId", userId);
+            return query.getSingleResult();
+        } catch (Exception e) {
+            return null;
+        } finally {
+            em.close();
+        }
+    }
+
+    @Override
     public List<Student> findAll() {
         EntityManager em = datasource.MariaDbConnection.getEntityManager();
         try {

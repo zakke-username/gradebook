@@ -16,6 +16,18 @@ public class Teacher {
     @Column(name = "lastName", nullable = false, length = 50)
     private String lastName;
 
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "userId")
+    private User user;
+
+    public User getUser() {
+        return user;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
+    }
+
     public Integer getId() {
         return id;
     }

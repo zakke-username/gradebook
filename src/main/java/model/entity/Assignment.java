@@ -24,7 +24,7 @@ public class Assignment {
     @Column(name = "type", nullable = false, length = 50)
     private String type;
 
-    @ManyToOne(fetch = FetchType.LAZY, optional = false)
+    @ManyToOne(fetch = FetchType.EAGER, optional = false)
     @JoinColumn(name = "courseId", nullable = false)
     @OnDelete(action = OnDeleteAction.CASCADE)
     private Course course;
