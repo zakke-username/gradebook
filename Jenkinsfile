@@ -9,7 +9,7 @@ pipeline {
     stages {
         stage('Checkout') {
             steps {
-                git branch: 'docker', url: 'https://github.com/zakke-username/gradebook.git'
+                git branch: 'main', url: 'https://github.com/zakke-username/gradebook.git'
             }
         }
 
