@@ -6,10 +6,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
-import javafx.scene.control.Label;
-import javafx.scene.control.ListCell;
-import javafx.scene.control.ListView;
+import javafx.scene.control.*;
 import javafx.scene.layout.VBox;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
@@ -191,6 +188,31 @@ public class CourseController {
 
         // Show popup
         displayAssignmentWindow(a);
+    }
+
+    @FXML
+    private void openEnrollWindow() {
+        // Open window
+        try {
+            // Load FXML
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/EnrollView.fxml"));
+            Parent root = loader.load();
+
+            // Setup controller
+            EnrollmentController controller = loader.getController();
+            controller.setCourse(this.course);
+
+            // New window
+            Stage stage = new Stage();
+            stage.setTitle("Lisää opiskelija kurssille");
+            stage.initModality(Modality.APPLICATION_MODAL);
+            stage.setScene(new Scene(root));
+            stage.showAndWait();
+
+            displayStudents();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 
     private void displayStudentView(Student student) {

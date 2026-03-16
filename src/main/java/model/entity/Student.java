@@ -63,4 +63,8 @@ public class Student {
         this.enrollmentYear = enrollmentYear;
     }
 
+    @Override
+    public String toString() {
+        return getFirstName() + " " + getLastName();
+    }
 }
