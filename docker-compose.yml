@@ -1,0 +1,42 @@
+services:
+  db:
+    image: mariadb:11
+    container_name: gradebook-db
+    restart: always
+    environment:
+      # make sure your DB_PASSWORD is correct mine is root
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: gradebook
+      MYSQL_USER: appuser
+      MYSQL_PASSWORD: password
+      # Make sure your 3307 port is available
+    ports:
+      - "3307:3306"
+    volumes:
+      - db_data:/var/lib/mysql
+
+  app:
+    # image is my own account for the exercise you have to change to your account
+    #IMPORTANT docker build -t yourname/calculator .
+    # docker push yourname/calculator: last
+    # then you can change the image in the following statment
+    image: gasdy/gradebook:latest
+    container_name: gradebook-app
+    depends_on:
+      - db
+    environment:
+      DB_HOST: db
+      DB_PORT: 3306
+      DB_NAME: gradebook
+      # make sure your DB_USER name is correct mine is root
+      DB_USER: appuser
+      # make sure your DB_PASSWORD is correct mine is root
+      DB_PASSWORD: password
+      DISPLAY: host.docker.internal:0
+    volumes:
+      - /tmp/.X11-unix:/tmp/.X11-unix
+#    network_mode: bridge # it cancels network of docker -> docker cannot find host db.
+volumes:
+  db_data:
+
+#  Then execute docker compose up --build
