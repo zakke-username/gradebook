@@ -1,4 +1,4 @@
-package model.dao.implementation;
+package unitTests.model.dao.implementation;
 
 import model.entity.Course;
 import model.entity.Teacher;

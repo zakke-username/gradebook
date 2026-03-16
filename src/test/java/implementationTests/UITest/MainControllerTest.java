@@ -1,4 +1,4 @@
-package UITest;
+package implementationTests.UITest;
 
 import controller.MainController;
 import javafx.scene.control.ListView;

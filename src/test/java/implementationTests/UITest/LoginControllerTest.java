@@ -1,4 +1,4 @@
-package UITest;
+package implementationTests.UITest;
 
 import model.dao.implementation.UserDaoImpl;
 import model.entity.User;
