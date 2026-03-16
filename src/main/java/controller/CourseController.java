@@ -252,4 +252,16 @@ public class CourseController {
             e.printStackTrace();
         }
     }
+
+    public void setCourseNameLabel(Label label) {
+        this.courseNameLabel = label;
+    }
+
+    public void setStudentListView(ListView<Student> studentListView) {
+        this.studentListView = studentListView;
+    }
+
+    public void setAssignmentListView(ListView<Assignment> assignmentListView) {
+        this.assignmentListView = assignmentListView;
+    }
 }

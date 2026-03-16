@@ -62,6 +62,6 @@ public class EnrollmentController {
         enrollmentDao.create(enrollment);
 
         // Close window
-            studentsChoiceBox.getScene().getWindow().hide();
+        studentsChoiceBox.getScene().getWindow().hide();
     }
 }

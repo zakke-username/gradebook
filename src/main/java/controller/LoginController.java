@@ -11,21 +11,19 @@ import model.entity.User;
 
 public class LoginController {
 
+    private static User loggedInUser;
+    private final UserDao userDao = new UserDaoImpl();
     @FXML
     private TextField usernameField;
-
     @FXML
     private PasswordField passwordField;
-
     @FXML
     private Label errorLabel;
-
-    private final UserDao userDao = new UserDaoImpl();
-
     private boolean loginSuccess = false;
 
-    private static User loggedInUser;
-
+    public static User getLoggedInUser() {
+        return loggedInUser;
+    }
 
     public boolean isLoginSuccess() {
         return loginSuccess;
@@ -54,10 +52,6 @@ public class LoginController {
         } else {
             showError("Kirjautuminen epäonnistui!");
         }
-    }
-
-    public static User getLoggedInUser() {
-        return loggedInUser;
     }
 
     private boolean checkPassword(String plainPassword, String storedHash) {

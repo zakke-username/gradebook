@@ -176,4 +176,12 @@ public class StudentController {
         String studentName = student.getFirstName() + " " + student.getLastName();
         SaveFile.saveReportAsPdf(courseName, grades, weightedAverage, studentName);
     }
+
+    public void setStudentNameLabel(Label label) {
+        this.studentNameLabel = label;
+    }
+
+    public void setCourseNameLabel(Label label) {
+        this.courseNameLabel = label;
+    }
 }
