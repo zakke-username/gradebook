@@ -12,7 +12,7 @@ RUN apt-get update && \
 # Download JavaFX SDK 25
 RUN wget https://download2.gluonhq.com/openjfx/25/openjfx-25_linux-x64_bin-sdk.zip -O /tmp/openjfx.zip && \
     unzip /tmp/openjfx.zip -d /opt && \
-    rm /tmp/openjfx.zip \
+    rm /tmp/openjfx.zip
 
 WORKDIR /app
 
