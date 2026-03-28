@@ -12,7 +12,7 @@
    <children>
       <VBox prefHeight="25.0" prefWidth="580.0" spacing="8.0">
          <children>
-            <Label text="Arvioinnit" VBox.vgrow="ALWAYS">
+            <Label fx:id="titleLabel" text="Arvioinnit" VBox.vgrow="ALWAYS">
                <font>
                   <Font name="System Bold" size="18.0" />
                </font>

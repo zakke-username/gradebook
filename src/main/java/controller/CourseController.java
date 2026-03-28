@@ -21,6 +21,8 @@ import model.entity.Student;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Locale;
+import java.util.ResourceBundle;
 
 
 public class CourseController {
@@ -42,7 +44,17 @@ public class CourseController {
     private Button backButton;
 
     @FXML
+    private Button addStudentButton;
+
+    @FXML
+    private Label studentsLabel;
+
+    @FXML
+    private Label assignmentsLabel;
+
+    @FXML
     public void initialize() {
+        loadLanguage();
     }
 
     public void setCourse(Course course) {
@@ -263,5 +275,17 @@ public class CourseController {
 
     public void setAssignmentListView(ListView<Assignment> assignmentListView) {
         this.assignmentListView = assignmentListView;
+    }
+
+    private void loadLanguage() {
+        // Hardcoded placeholder locale & resource bundle (todo: language selection)
+        Locale locale = new Locale("fi", "FI");
+        ResourceBundle r = ResourceBundle.getBundle("CourseBundle", locale);
+
+        studentsLabel.setText(r.getString("STUDENTS_LABEL"));
+        assignmentsLabel.setText(r.getString("ASSIGNMENTS_LABEL"));
+        addStudentButton.setText("+ " + r.getString("ADD_STUDENT_BUTTON"));
+        newAssignmentButton.setText("+ " + r.getString("NEW_ASSIGNMENT_BUTTON"));
+        backButton.setText("< " + r.getString("BACK_BUTTON"));
     }
 }

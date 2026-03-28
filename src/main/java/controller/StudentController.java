@@ -23,14 +23,14 @@ import util.GradeCalculate;
 import util.SaveFile;
 
 import java.time.LocalDate;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 public class StudentController {
     private Student student;
     private Course course;
+
+    @FXML
+    private Label titleLabel;
 
     @FXML
     private Label studentNameLabel;
@@ -53,6 +53,10 @@ public class StudentController {
     @FXML
     private Button saveReportCardButton;
 
+    public void initialize() {
+        loadLanguage();
+    }
+
     public void setStudent(Student student) {
         this.student = student;
     }
@@ -62,9 +66,9 @@ public class StudentController {
     }
 
     public void displayInfo() {
-        studentNameLabel.setText("Opiskelija: " + this.student.getFirstName() + " " + this.student.getLastName());
-        courseNameLabel.setText("Kurssi: " + this.course.getName());
-        weightedAverageLabel.setText("Painotettu keskiarvo (0-5): " + String.format("%.2f", calculateWeightedAverage()));
+        studentNameLabel.setText(this.student.getFirstName() + " " + this.student.getLastName());
+        courseNameLabel.setText(this.course.getName());
+        weightedAverageLabel.setText(String.format("%.2f", calculateWeightedAverage()));
         displayGrades();
     }
 
@@ -183,5 +187,16 @@ public class StudentController {
 
     public void setCourseNameLabel(Label label) {
         this.courseNameLabel = label;
+    }
+
+    private void loadLanguage() {
+        // Hardcoded placeholder locale & resource bundle (todo: language selection)
+        Locale locale = new Locale("fi", "FI");
+        ResourceBundle r = ResourceBundle.getBundle("StudentBundle", locale);
+
+        titleLabel.setText(r.getString("GRADES_TITLE"));
+        assignmentColumn.setText(r.getString("ASSIGNMENT"));
+        gradeColumn.setText(r.getString("POINTS"));
+        saveReportCardButton.setText(r.getString("SAVE_REPORT"));
     }
 }

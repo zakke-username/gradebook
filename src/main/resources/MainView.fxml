@@ -50,14 +50,22 @@
                   <Font name="System Bold" size="18.0" />
                </font>
                <VBox.margin>
-                  <Insets bottom="32.0" left="32.0" right="32.0" top="32.0" />
+                  <Insets bottom="16.0" left="32.0" right="32.0" top="32.0" />
                </VBox.margin>
+            </Label>
+            <Label fx:id="nameLabel" text="Matti Meikäläinen">
+               <VBox.margin>
+                  <Insets left="32.0" />
+               </VBox.margin>
+               <font>
+                  <Font name="System Bold" size="14.0" />
+               </font>
             </Label>
             <HBox prefHeight="100.0" prefWidth="200.0" spacing="32.0" VBox.vgrow="ALWAYS">
                <children>
                   <VBox prefHeight="200.0" prefWidth="100.0" style="-fx-background-color: #d2dce5; -fx-background-radius: 8;" HBox.hgrow="ALWAYS">
                      <children>
-                        <Label text="Sinun kurssisi" VBox.vgrow="ALWAYS">
+                        <Label fx:id="coursesLabel" text="Sinun kurssisi" VBox.vgrow="ALWAYS">
                            <font>
                               <Font name="System Bold" size="14.0" />
                            </font>
@@ -89,7 +97,7 @@
                         <Insets bottom="16.0" left="16.0" right="16.0" top="16.0" />
                      </padding>
                      <children>
-                        <Label text="Arvostelemattomat tehtävät" VBox.vgrow="ALWAYS">
+                        <Label fx:id="assignmentsLabel" text="Arvostelemattomat tehtävät" VBox.vgrow="ALWAYS">
                            <font>
                               <Font name="System Bold" size="14.0" />
                            </font>

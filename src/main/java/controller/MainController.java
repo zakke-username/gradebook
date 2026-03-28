@@ -13,6 +13,8 @@ import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 
 import java.util.List;
+import java.util.Locale;
+import java.util.ResourceBundle;
 
 import model.dao.AssignmentDao;
 import model.dao.CourseDao;
@@ -36,7 +38,17 @@ public class MainController {
     private Label welcomeLabel;
 
     @FXML
+    private Label nameLabel;
+
+    @FXML
+    private Label coursesLabel;
+
+    @FXML
+    private Label assignmentsLabel;
+
+    @FXML
     public void initialize() {
+        loadLanguage();
         displayCourses();
         displayAssignments();
     }
@@ -46,7 +58,7 @@ public class MainController {
         Teacher teacher = teacherDao.findByUserId(user.getId());
 
         if (teacher != null) {
-            welcomeLabel.setText("Tervetuloa, " + teacher.getFirstName() + " " + teacher.getLastName() + "!");
+            nameLabel.setText(teacher.getFirstName() + " " + teacher.getLastName());
             return;
         }
 
@@ -57,7 +69,7 @@ public class MainController {
                 ? student.getFirstName() + " " + student.getLastName()
                 : user.getUsername();
 
-        welcomeLabel.setText("Tervetuloa, " + name + "!");
+        nameLabel.setText(name);
     }
 
     // Show all courses for testing (todo: get courses by teacher ID)
@@ -157,5 +169,16 @@ public class MainController {
         container.setSpacing(16);
         container.setStyle("-fx-background-color: #b6c8d4;" + "-fx-padding: 16;" + "-fx-background-radius: 8;");
         return container;
+    }
+
+    private void loadLanguage() {
+        // Hardcoded placeholder locale & resource bundle (todo: language selection)
+        Locale locale = new Locale("fi", "FI");
+        ResourceBundle r = ResourceBundle.getBundle("MainBundle", locale);
+
+        // Set label texts
+        welcomeLabel.setText(r.getString("WELCOME_LABEL"));
+        coursesLabel.setText(r.getString("COURSES_LABEL"));
+        assignmentsLabel.setText(r.getString("ASSIGNMENTS_LABEL"));
     }
 }
