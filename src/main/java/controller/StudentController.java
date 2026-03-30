@@ -20,8 +20,10 @@ import model.entity.Course;
 import model.entity.Grade;
 import model.entity.Student;
 import util.GradeCalculate;
+import util.LocaleManager;
 import util.SaveFile;
 
+import java.text.MessageFormat;
 import java.time.LocalDate;
 import java.util.*;
 
@@ -53,6 +55,8 @@ public class StudentController {
     @FXML
     private Button saveReportCardButton;
 
+    private LocaleManager lm;
+
     public void initialize() {
         loadLanguage();
     }
@@ -66,9 +70,9 @@ public class StudentController {
     }
 
     public void displayInfo() {
-        studentNameLabel.setText(this.student.getFirstName() + " " + this.student.getLastName());
-        courseNameLabel.setText(this.course.getName());
-        weightedAverageLabel.setText(String.format("%.2f", calculateWeightedAverage()));
+        studentNameLabel.setText(MessageFormat.format(lm.getString("STUDENT_NAME"), this.student.getFirstName() + " " + this.student.getLastName()));
+        courseNameLabel.setText(MessageFormat.format(lm.getString("STUDENT_COURSE_NAME"), this.course.getName()));
+        weightedAverageLabel.setText(MessageFormat.format(lm.getString("STUDENT_AVERAGE"), String.format("%.2f", calculateWeightedAverage())));
         displayGrades();
     }
 
@@ -80,7 +84,7 @@ public class StudentController {
         assignmentColumn.setCellValueFactory(data -> new ReadOnlyStringWrapper(data.getValue().getKey()));
         gradeColumn.setCellValueFactory(data -> {
             Integer score = data.getValue().getValue();
-            return new ReadOnlyStringWrapper(score != null ? score.toString() : "Ungraded");
+            return new ReadOnlyStringWrapper(score != null ? score.toString() : lm.getString("UNGRADED_POINTS"));
         });
 
         // Make grades editable
@@ -190,13 +194,11 @@ public class StudentController {
     }
 
     private void loadLanguage() {
-        // Hardcoded placeholder locale & resource bundle (todo: language selection)
-        Locale locale = new Locale("fi", "FI");
-        ResourceBundle r = ResourceBundle.getBundle("StudentBundle", locale);
+        lm = LocaleManager.getInstance();
 
-        titleLabel.setText(r.getString("GRADES_TITLE"));
-        assignmentColumn.setText(r.getString("ASSIGNMENT"));
-        gradeColumn.setText(r.getString("POINTS"));
-        saveReportCardButton.setText(r.getString("SAVE_REPORT"));
+        titleLabel.setText(lm.getString("GRADES_TITLE"));
+        assignmentColumn.setText(lm.getString("ASSIGNMENT_COLUMN"));
+        gradeColumn.setText(lm.getString("POINTS_COLUMN"));
+        saveReportCardButton.setText(lm.getString("SAVE_REPORT"));
     }
 }

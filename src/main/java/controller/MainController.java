@@ -6,12 +6,14 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.ListCell;
 import javafx.scene.control.ListView;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 
+import java.text.MessageFormat;
 import java.util.List;
 import java.util.Locale;
 import java.util.ResourceBundle;
@@ -25,6 +27,7 @@ import model.dao.implementation.TeacherDaoImpl;
 import model.entity.*;
 import model.dao.implementation.CourseDaoImpl;
 import model.dao.implementation.AssignmentDaoImpl;
+import util.LocaleManager;
 
 public class MainController {
 
@@ -47,10 +50,16 @@ public class MainController {
     private Label assignmentsLabel;
 
     @FXML
+    private ComboBox<String> languageSelector;
+
+    private String name;
+
+    @FXML
     public void initialize() {
         loadLanguage();
         displayCourses();
         displayAssignments();
+        initializeLanguageSelector();
     }
 
     public void setUser(User user) {
@@ -58,7 +67,8 @@ public class MainController {
         Teacher teacher = teacherDao.findByUserId(user.getId());
 
         if (teacher != null) {
-            nameLabel.setText(teacher.getFirstName() + " " + teacher.getLastName());
+            this.name = teacher.getFirstName() + " " + teacher.getLastName();
+            loadLanguage();
             return;
         }
 
@@ -69,7 +79,8 @@ public class MainController {
                 ? student.getFirstName() + " " + student.getLastName()
                 : user.getUsername();
 
-        nameLabel.setText(name);
+        this.name = name;
+        loadLanguage();
     }
 
     // Show all courses for testing (todo: get courses by teacher ID)
@@ -172,13 +183,29 @@ public class MainController {
     }
 
     private void loadLanguage() {
-        // Hardcoded placeholder locale & resource bundle (todo: language selection)
-        Locale locale = new Locale("fi", "FI");
-        ResourceBundle r = ResourceBundle.getBundle("MainBundle", locale);
+        LocaleManager lm = LocaleManager.getInstance();
+        welcomeLabel.setText(MessageFormat.format(lm.getString("WELCOME_LABEL"), this.name));
+        coursesLabel.setText(lm.getString("COURSES_LABEL"));
+        assignmentsLabel.setText(lm.getString("ASSIGNMENTS_LABEL"));
+    }
 
-        // Set label texts
-        welcomeLabel.setText(r.getString("WELCOME_LABEL"));
-        coursesLabel.setText(r.getString("COURSES_LABEL"));
-        assignmentsLabel.setText(r.getString("ASSIGNMENTS_LABEL"));
+    private void initializeLanguageSelector() {
+        LocaleManager localeManager = LocaleManager.getInstance();
+
+        languageSelector.getItems().addAll("English", "Finnish");
+        languageSelector.setOnAction(e -> {
+            switch (languageSelector.getValue()) {
+                case "English":
+                    localeManager.setLocale(new Locale("en", "US"));
+                    break;
+                case "Finnish":
+                    localeManager.setLocale(new Locale("fi", "FI"));
+                    break;
+                default:
+                    localeManager.setLocale(new Locale("fi", "FI"));
+                    break;
+            }
+            loadLanguage();
+        });
     }
 }

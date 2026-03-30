@@ -18,7 +18,9 @@ import model.entity.Assignment;
 import model.entity.Course;
 import model.entity.Enrollment;
 import model.entity.Student;
+import util.LocaleManager;
 
+import java.text.MessageFormat;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Locale;
@@ -52,6 +54,8 @@ public class CourseController {
     @FXML
     private Label assignmentsLabel;
 
+    private LocaleManager lm;
+
     @FXML
     public void initialize() {
         loadLanguage();
@@ -59,7 +63,7 @@ public class CourseController {
 
     public void setCourse(Course course) {
         this.course = course;
-        courseNameLabel.setText("Kurssi: " + course.getName());
+        courseNameLabel.setText(MessageFormat.format(lm.getString("COURSE_VIEW_TITLE"), course.getName()));
         displayStudents();
         displayAssignments();
     }
@@ -278,14 +282,12 @@ public class CourseController {
     }
 
     private void loadLanguage() {
-        // Hardcoded placeholder locale & resource bundle (todo: language selection)
-        Locale locale = new Locale("fi", "FI");
-        ResourceBundle r = ResourceBundle.getBundle("CourseBundle", locale);
+        lm = LocaleManager.getInstance();
 
-        studentsLabel.setText(r.getString("STUDENTS_LABEL"));
-        assignmentsLabel.setText(r.getString("ASSIGNMENTS_LABEL"));
-        addStudentButton.setText("+ " + r.getString("ADD_STUDENT_BUTTON"));
-        newAssignmentButton.setText("+ " + r.getString("NEW_ASSIGNMENT_BUTTON"));
-        backButton.setText("< " + r.getString("BACK_BUTTON"));
+        studentsLabel.setText(lm.getString("STUDENTS_LABEL"));
+        assignmentsLabel.setText(lm.getString("COURSE_ASSIGNMENTS_LABEL"));
+        addStudentButton.setText("+ " + lm.getString("ADD_STUDENT_BUTTON"));
+        newAssignmentButton.setText("+ " + lm.getString("NEW_ASSIGNMENT_BUTTON"));
+        backButton.setText("< " + lm.getString("BACK_BUTTON"));
     }
 }

@@ -9,40 +9,32 @@ import javafx.stage.Stage;
 import model.dao.AssignmentDao;
 import model.dao.implementation.AssignmentDaoImpl;
 import model.entity.Assignment;
+import util.LocaleManager;
 
 import java.util.Locale;
 import java.util.ResourceBundle;
 
 public class AssignmentController {
+    LocaleManager lm;
     private Assignment assignment;
-
     @FXML
     private Label assignmentTitleLabel;
-
     @FXML
     private TextField titleTextField;
-
     @FXML
     private TextArea descriptionTextArea;
-
     @FXML
     private TextField pointsTextField;
-
     @FXML
     private TextField weightTextField;
-
     @FXML
     private Label titleLabel;
-
     @FXML
     private Label descriptionLabel;
-
     @FXML
     private Label maxPointsLabel;
-
     @FXML
     private Label weightLabel;
-
     @FXML
     private Button saveButton;
 
@@ -56,7 +48,7 @@ public class AssignmentController {
     }
 
     private void displayInfo() {
-        assignmentTitleLabel.setText("Muokkaa tehtävää " + this.assignment.getTitle());
+        assignmentTitleLabel.setText(lm.getString("MODIFY_ASSIGNMENT"));
         titleTextField.setText(assignment.getTitle());
         weightTextField.setText(String.valueOf(assignment.getWeight()));
         descriptionTextArea.setText("Placeholder description...");
@@ -81,14 +73,12 @@ public class AssignmentController {
     }
 
     private void loadLanguage() {
-        // Hardcoded placeholder locale & resource bundle (todo: language selection)
-        Locale locale = new Locale("fi", "FI");
-        ResourceBundle r = ResourceBundle.getBundle("AssignmentBundle", locale);
+        lm = LocaleManager.getInstance();
 
-        titleLabel.setText(r.getString("TITLE"));
-        descriptionLabel.setText(r.getString("DESCRIPTION"));
-        maxPointsLabel.setText(r.getString("MAX_POINTS"));
-        weightLabel.setText(r.getString("WEIGHT"));
-        saveButton.setText(r.getString("SAVE"));
+        titleLabel.setText(lm.getString("ASSIGNMENT_TITLE"));
+        descriptionLabel.setText(lm.getString("ASSIGNMENT_DESCRIPTION"));
+        maxPointsLabel.setText(lm.getString("MAX_POINTS"));
+        weightLabel.setText(lm.getString("WEIGHT"));
+        saveButton.setText(lm.getString("SAVE_ASSIGNMENT"));
     }
 }
