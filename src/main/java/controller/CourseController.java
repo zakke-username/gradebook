@@ -4,6 +4,7 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.geometry.NodeOrientation;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
@@ -53,6 +54,9 @@ public class CourseController {
 
     @FXML
     private Label assignmentsLabel;
+
+    @FXML
+    private Parent root;
 
     private LocaleManager lm;
 
@@ -146,7 +150,7 @@ public class CourseController {
                     container.getChildren().add(nameLabel);
 
                     // Score
-                    Label scoreLabel = new Label("Maksimipisteet: " + assignment.getMaxScore().toString());
+                    Label scoreLabel = new Label(MessageFormat.format(lm.getString("MAXIMUM_POINTS"), assignment.getMaxScore()));
                     scoreLabel.setStyle("-fx-font-size: 12;" + "-fx-text-fill: black;");
                     container.getChildren().add(scoreLabel);
 
@@ -289,5 +293,11 @@ public class CourseController {
         addStudentButton.setText("+ " + lm.getString("ADD_STUDENT_BUTTON"));
         newAssignmentButton.setText("+ " + lm.getString("NEW_ASSIGNMENT_BUTTON"));
         backButton.setText("< " + lm.getString("BACK_BUTTON"));
+
+        if ("fa".equals(lm.getLanguage())) {
+            root.setNodeOrientation(NodeOrientation.RIGHT_TO_LEFT);
+        } else {
+            root.setNodeOrientation(NodeOrientation.LEFT_TO_RIGHT);
+        }
     }
 }

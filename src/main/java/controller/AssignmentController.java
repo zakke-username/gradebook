@@ -1,6 +1,8 @@
 package controller;
 
 import javafx.fxml.FXML;
+import javafx.geometry.NodeOrientation;
+import javafx.scene.Parent;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextArea;
@@ -37,6 +39,8 @@ public class AssignmentController {
     private Label weightLabel;
     @FXML
     private Button saveButton;
+    @FXML
+    private Parent root;
 
     public void initialize() {
         loadLanguage();
@@ -51,7 +55,6 @@ public class AssignmentController {
         assignmentTitleLabel.setText(lm.getString("MODIFY_ASSIGNMENT"));
         titleTextField.setText(assignment.getTitle());
         weightTextField.setText(String.valueOf(assignment.getWeight()));
-        descriptionTextArea.setText("Placeholder description...");
         pointsTextField.setText(this.assignment.getMaxScore().toString());
     }
 
@@ -80,5 +83,11 @@ public class AssignmentController {
         maxPointsLabel.setText(lm.getString("MAX_POINTS"));
         weightLabel.setText(lm.getString("WEIGHT"));
         saveButton.setText(lm.getString("SAVE_ASSIGNMENT"));
+
+        if ("fa".equals(lm.getLanguage())) {
+            root.setNodeOrientation(NodeOrientation.RIGHT_TO_LEFT);
+        } else {
+            root.setNodeOrientation(NodeOrientation.LEFT_TO_RIGHT);
+        }
     }
 }

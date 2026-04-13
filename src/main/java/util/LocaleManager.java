@@ -26,4 +26,8 @@ public class LocaleManager {
     public String getString(String str) {
         return resourceBundle.getString(str);
     }
+
+    public String getLanguage() {
+        return currentLocale.getLanguage();
+    }
 }

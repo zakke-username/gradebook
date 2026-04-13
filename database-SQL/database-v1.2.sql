@@ -20,30 +20,40 @@ CREATE DATABASE IF NOT EXISTS `gradebook` /*!40100 DEFAULT CHARACTER SET utf8mb3
 USE `gradebook`;
 
 -- Dumping structure for table gradebook.assignment
-CREATE TABLE IF NOT EXISTS `assignment` (
-  `assignmentId` int(11) NOT NULL AUTO_INCREMENT,
-  `maxScore` int(11) NOT NULL,
-  `title` varchar(50) NOT NULL,
-  `type` varchar(50) NOT NULL,
-  `weight` float DEFAULT NULL,
-  `courseId` int(11) NOT NULL,
-  PRIMARY KEY (`assignmentId`),
-  KEY `FKsl31bvfqah909gfpfmh1597nn` (`courseId`),
-  CONSTRAINT `FKsl31bvfqah909gfpfmh1597nn` FOREIGN KEY (`courseId`) REFERENCES `course` (`courseId`) ON DELETE CASCADE
-) ENGINE=InnoDB AUTO_INCREMENT=17 DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_general_ci;
+CREATE TABLE `assignment` (
+  `assignmentId` INT(11) NOT NULL AUTO_INCREMENT,
+  `maxScore` INT(11) NOT NULL,
+  `titleEn` VARCHAR(50) NOT NULL COLLATE 'utf8mb3_general_ci',
+  `titleFi` VARCHAR(50) NOT NULL COLLATE 'utf8mb3_general_ci',
+  `typeEn` VARCHAR(50) NOT NULL COLLATE 'utf8mb3_general_ci',
+  `typeFi` VARCHAR(50) NOT NULL COLLATE 'utf8mb3_general_ci',
+  `weight` FLOAT NULL DEFAULT NULL,
+  `courseId` INT(11) NOT NULL,
+  PRIMARY KEY (`assignmentId`) USING BTREE,
+  INDEX `FKsl31bvfqah909gfpfmh1597nn` (`courseId`) USING BTREE,
+  CONSTRAINT `FKsl31bvfqah909gfpfmh1597nn` FOREIGN KEY (`courseId`) REFERENCES `course` (`courseId`) ON UPDATE RESTRICT ON DELETE CASCADE
+)
+    COLLATE='utf8mb3_general_ci'
+ENGINE=InnoDB
+AUTO_INCREMENT=78
+;
 
 -- Data exporting was unselected.
 
--- Dumping structure for table gradebook.course
-CREATE TABLE IF NOT EXISTS `course` (
-  `courseId` int(11) NOT NULL AUTO_INCREMENT,
-  `code` varchar(50) NOT NULL,
-  `name` varchar(50) NOT NULL,
-  `teacherId` int(11) NOT NULL,
-  PRIMARY KEY (`courseId`),
-  KEY `FKfmwmts7ypkg95gfax46r2a2pd` (`teacherId`),
-  CONSTRAINT `FKfmwmts7ypkg95gfax46r2a2pd` FOREIGN KEY (`teacherId`) REFERENCES `teacher` (`teacherId`)
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_general_ci;
+CREATE TABLE `course` (
+  `courseId` INT(11) NOT NULL AUTO_INCREMENT,
+  `code` VARCHAR(50) NOT NULL COLLATE 'utf8mb3_general_ci',
+  `nameEn` VARCHAR(50) NOT NULL COLLATE 'utf8mb3_general_ci',
+  `nameFi` VARCHAR(50) NOT NULL COLLATE 'utf8mb3_general_ci',
+  `teacherId` INT(11) NOT NULL,
+  PRIMARY KEY (`courseId`) USING BTREE,
+  INDEX `FKfmwmts7ypkg95gfax46r2a2pd` (`teacherId`) USING BTREE,
+  CONSTRAINT `FKfmwmts7ypkg95gfax46r2a2pd` FOREIGN KEY (`teacherId`) REFERENCES `teacher` (`teacherId`) ON UPDATE RESTRICT ON DELETE RESTRICT
+)
+    COLLATE='utf8mb3_general_ci'
+ENGINE=InnoDB
+AUTO_INCREMENT=76
+;
 
 -- Data exporting was unselected.
 

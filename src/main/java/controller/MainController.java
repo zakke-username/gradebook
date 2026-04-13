@@ -4,6 +4,7 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.geometry.NodeOrientation;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.ComboBox;
@@ -50,7 +51,13 @@ public class MainController {
     private Label assignmentsLabel;
 
     @FXML
+    private Label languageLabel;
+
+    @FXML
     private ComboBox<String> languageSelector;
+
+    @FXML
+    private Parent root;
 
     private String name;
 
@@ -187,12 +194,19 @@ public class MainController {
         welcomeLabel.setText(MessageFormat.format(lm.getString("WELCOME_LABEL"), this.name));
         coursesLabel.setText(lm.getString("COURSES_LABEL"));
         assignmentsLabel.setText(lm.getString("ASSIGNMENTS_LABEL"));
+        languageLabel.setText(lm.getString("LANGUAGE_LABEL"));
+
+        if ("fa".equals(lm.getLanguage())) {
+            root.setNodeOrientation(NodeOrientation.RIGHT_TO_LEFT);
+        } else {
+            root.setNodeOrientation(NodeOrientation.LEFT_TO_RIGHT);
+        }
     }
 
     private void initializeLanguageSelector() {
         LocaleManager localeManager = LocaleManager.getInstance();
 
-        languageSelector.getItems().addAll("English", "Finnish");
+        languageSelector.getItems().addAll("English", "Finnish", "Persian");
         languageSelector.setOnAction(e -> {
             switch (languageSelector.getValue()) {
                 case "English":
@@ -201,11 +215,16 @@ public class MainController {
                 case "Finnish":
                     localeManager.setLocale(new Locale("fi", "FI"));
                     break;
+                case "Persian":
+                    localeManager.setLocale(new Locale("fa", "IR"));
+                    break;
                 default:
                     localeManager.setLocale(new Locale("fi", "FI"));
                     break;
             }
             loadLanguage();
+            displayCourses();
+            displayAssignments();
         });
     }
 }

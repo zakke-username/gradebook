@@ -3,6 +3,7 @@ package model.entity;
 import jakarta.persistence.*;
 import org.hibernate.annotations.OnDelete;
 import org.hibernate.annotations.OnDeleteAction;
+import util.LocaleManager;
 
 @Entity
 @Table(name = "assignment")
@@ -12,8 +13,14 @@ public class Assignment {
     @Column(name = "assignmentId", nullable = false)
     private Integer id;
 
-    @Column(name = "title", nullable = false, length = 50)
-    private String title;
+    @Column(name = "titleEn", nullable = false, length = 50)
+    private String titleEn;
+
+    @Column(name = "titleFi", nullable = false, length = 50)
+    private String titleFi;
+
+    @Column(name = "titleFa", nullable = false, length = 50)
+    private String titleFa;
 
     @Column(name = "weight")
     private Float weight;
@@ -21,8 +28,14 @@ public class Assignment {
     @Column(name = "maxScore", nullable = false)
     private Integer maxScore;
 
-    @Column(name = "type", nullable = false, length = 50)
-    private String type;
+    @Column(name = "typeEn", nullable = false, length = 50)
+    private String typeEn;
+
+    @Column(name = "typeFi", nullable = false, length = 50)
+    private String typeFi;
+
+    @Column(name = "typeFa", nullable = false, length = 50)
+    private String typeFa;
 
     @ManyToOne(fetch = FetchType.EAGER, optional = false)
     @JoinColumn(name = "courseId", nullable = false)
@@ -38,12 +51,26 @@ public class Assignment {
 //    }
 
     public String getTitle() {
-        return title;
+        LocaleManager lm = LocaleManager.getInstance();
+        String lang = lm.getLanguage();
+        return switch (lang) {
+            case "en" -> titleEn;
+            case "fi" -> titleFi;
+            case "fa" -> titleFa;
+            default -> titleEn;
+        };
     }
 
     public void setTitle(String title) {
-        this.title = title;
+        LocaleManager lm = LocaleManager.getInstance();
+        String lang = lm.getLanguage();
+        switch(lang) {
+            case "en" -> this.titleEn = title;
+            case "fi" -> this.titleFi = title;
+            case "fa" -> this.titleFa = title;
+        }
     }
+
 
     public Float getWeight() {
         return weight;
@@ -62,11 +89,24 @@ public class Assignment {
     }
 
     public String getType() {
-        return type;
+        LocaleManager lm = LocaleManager.getInstance();
+        String lang = lm.getLanguage();
+        return switch (lang) {
+            case "en" -> typeEn;
+            case "fi" -> typeFi;
+            case "fa" -> typeFa;
+            default -> typeEn;
+        };
     }
 
     public void setType(String type) {
-        this.type = type;
+        LocaleManager lm = LocaleManager.getInstance();
+        String lang = lm.getLanguage();
+        switch(lang) {
+            case "en" -> this.typeEn = type;
+            case "fi" -> this.typeFi = type;
+            case "fa" -> this.typeFa = type;
+        }
     }
 
     public Course getCourse() {

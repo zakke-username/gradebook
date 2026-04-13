@@ -40,3 +40,9 @@ Shows the database structure with entities like Enrollment, Student, Grade, Teac
 
 ## How to Demo
 To demo the application you are required to populate the application's database (running on the Docker container) manually. To populate database use newest version of sample-data.sql from [/database-SQL](/database-SQL)
+
+
+## Database localization
+The approach taken for database localization is to create new fields into existing tables, wherever translations are needed for each language. This approach was a straightforward choice, the amount of localized strings is fairly small, and the translated database fields can be easily accessed without modifying the source code too much.
+For each field to be translated, new column was created to accommodate each language, where a translation is required. The model class getters and setters were modified to access the correct translated string based on current locale.
+A modified ER diagram shows the new columns in the database. The database uses UTF-8 encoding.

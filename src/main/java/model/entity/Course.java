@@ -1,6 +1,9 @@
 package model.entity;
 
 import jakarta.persistence.*;
+import util.LocaleManager;
+
+import java.util.Locale;
 
 @Entity
 @Table(name = "course")
@@ -10,8 +13,14 @@ public class Course {
     @Column(name = "courseId", nullable = false)
     private Integer id;
 
-    @Column(name = "name", nullable = false, length = 50)
-    private String name;
+    @Column(name = "nameEn", nullable = false, length = 50)
+    private String nameEn;
+
+    @Column(name = "nameFi", nullable = false, length = 50)
+    private String nameFi;
+
+    @Column(name = "nameFa", nullable = false, length = 50)
+    private String nameFa;
 
     @Column(name = "code", nullable = false, length = 50)
     private String code;
@@ -29,12 +38,26 @@ public class Course {
     }
 
     public String getName() {
-        return name;
+        LocaleManager lm = LocaleManager.getInstance();
+        String lang = lm.getLanguage();
+        return switch (lang) {
+            case "en" -> nameEn;
+            case "fi" -> nameFi;
+            case "fa" -> nameFa;
+            default -> nameEn;
+        };
     }
 
     public void setName(String name) {
-        this.name = name;
+        LocaleManager lm = LocaleManager.getInstance();
+        String lang = lm.getLanguage();
+        switch (lang) {
+            case "en" -> this.nameEn = name;
+            case "fi" -> this.nameFi = name;
+            case "fa" -> this.nameFa = name;
+        }
     }
+
 
     public String getCode() {
         return code;

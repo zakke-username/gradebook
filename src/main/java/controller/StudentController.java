@@ -4,6 +4,8 @@ import javafx.beans.property.ReadOnlyStringWrapper;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
+import javafx.geometry.NodeOrientation;
+import javafx.scene.Parent;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
@@ -54,6 +56,9 @@ public class StudentController {
 
     @FXML
     private Button saveReportCardButton;
+
+    @FXML
+    private Parent root;
 
     private LocaleManager lm;
 
@@ -200,5 +205,11 @@ public class StudentController {
         assignmentColumn.setText(lm.getString("ASSIGNMENT_COLUMN"));
         gradeColumn.setText(lm.getString("POINTS_COLUMN"));
         saveReportCardButton.setText(lm.getString("SAVE_REPORT"));
+
+        if ("fa".equals(lm.getLanguage())) {
+            root.setNodeOrientation(NodeOrientation.RIGHT_TO_LEFT);
+        } else {
+            root.setNodeOrientation(NodeOrientation.LEFT_TO_RIGHT);
+        }
     }
 }

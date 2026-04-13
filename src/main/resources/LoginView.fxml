@@ -8,7 +8,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<VBox alignment="CENTER" prefHeight="458.0" prefWidth="341.0" spacing="16.0" style="-fx-background-color: #d2dce5; -fx-background-radius: 8;" xmlns="http://javafx.com/javafx/25" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.LoginController">
+<VBox fx:id="root" alignment="CENTER" prefHeight="458.0" prefWidth="341.0" spacing="16.0" style="-fx-background-color: #d2dce5; -fx-background-radius: 8;" xmlns="http://javafx.com/javafx/25" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.LoginController">
 
     <Label style="-fx-text-fill: black; -fx-font-weight: bold;" text="Kirjaudu sisään">
         <font>
