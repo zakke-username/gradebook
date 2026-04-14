@@ -34,6 +34,9 @@ Shows how teachers and students interact with the program
 ![Database schema Diagram](doc/Figures/ER%20diagrams/database-schemaV1.3.png)
 Shows the database structure with entities like Enrollment, Student, Grade, Teacher, Course and Assignment
 
+### Sequence Diagram
+![Sequence Diagram](doc/UMLSeq.png)
+
 ### Sprint Reports
 
 #### https://github.com/zakke-username/gradebook/tree/main/doc/Sprint%20reports
